@@ -15,7 +15,7 @@ import logo from "../imagenes/mylogofinal.png"
 import icon from "../imagenes/iconlogin.png"
 
 const pages = ['Home', 'Cities'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const settings = ['Login',  'Logout', 'Account'];
 
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -37,7 +37,7 @@ const ResponsiveAppBar = () => {
   };
 
   return (
-    <AppBar position="fixed" className='navBar'>
+    <AppBar position="static" className='navBar'>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography>
@@ -50,7 +50,7 @@ const ResponsiveAppBar = () => {
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              color="inherit"
+              color="default"
             >
               <MenuIcon />
             </IconButton>
@@ -101,7 +101,7 @@ const ResponsiveAppBar = () => {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src={icon} />
+                <Avatar alt="Remy Sharp" src={icon}/>
               </IconButton>
             </Tooltip>
             <Menu
