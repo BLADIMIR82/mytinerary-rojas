@@ -1,11 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Open+Sans:ital,wght@1,600&display=swap');
 *{
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+  
 }
 .navBar {
-  display: flex;
-  flex-direction: column;
   background-color: rgba(179, 180, 178, 0) !important;
 }
 .butt{
@@ -14,15 +15,71 @@
   border-radius: 1rem !important;
   margin-right:  1rem !important;
 }
+.butt:hover{
+  background-color:rgb(20, 20, 20) !important;
+  font-size: 0.8rem !important;
+}
 .carro{
 display:flex;
 flex-direction: column;
-width: 50vw;
-height: 80vh;
-
-
+width: 100%;
+height: 130vh;
+padding: 1rem 5rem;
+justify-content: center;
+background-color: rgb(37, 36, 36);
 }
 .imagenes{
   width: 100%;
-  height: 90%;
+  height: 92%;
 }
+.title-card{
+  padding-bottom: 0.5rem;
+}
+.title{
+  text-align: center;
+  padding-bottom: 1rem;
+  font-size: 3rem;
+  color: white;
+}
+
+.hero{
+  height: 130vh;
+  background-size:cover;
+  background-position:center;
+  font-family: 'Open Sans', sans-serif;
+}
+.article-hero{
+  text-align: center; 
+  font-size: 3rem;
+  padding-top: 12rem;
+  background-image: url(./imagenes/logo3.png);
+  background-size: 14rem;
+  background-position: top;
+  background-repeat: no-repeat;
+  height: 10rem;
+  color: black;
+ padding: 14rem 4rem;
+}
+.call{
+  height: 130vh;
+  background-size:cover;
+  background-position: center;
+}
+.article-call{
+  text-align: center; 
+  font-size: 3rem;
+  padding-top: 9rem;
+  background-position: top;
+  background-repeat: no-repeat;
+  height: 10rem;
+
+}
+.btn{
+  height: 2rem;
+  width: 6rem;
+  color: black;
+  padding:1rem;
+  border-radius: 1rem !important;
+  padding-bottom: 2rem !important;
+}
+

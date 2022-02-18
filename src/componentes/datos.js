@@ -42,32 +42,32 @@ const cities =[
       },
       {
         "id": 8,
-        "image":"Salida al museo5.jpg",
-        "name": "Parque Juracico",
+        "image":"London.jpg",
+        "name": "London",
        
       },
       {
         "id": 9,
-        "image":"Cine7.jpg",
-        "name": "Avengers",
+        "image":"buenosaires.jpg",
+        "name": "Buenos Aires",
        
       },
       {
         "id": 10,
-        "image":"Cine7.jpg",
-        "name": "Avengers",
+        "image":"moscu.jpg",
+        "name": "Moscu",
        
       },
       {
         "id": 11,
-        "image":"Cine7.jpg",
-        "name": "Avengers",
+        "image":"berlin.jpg",
+        "name": "Berlin",
        
       },
       {
         "id": 12,
-        "image":"Cine7.jpg",
-        "name": "Avengers",
+        "image":"oslo.jpg",
+        "name": "Oslo",
        
       }
     

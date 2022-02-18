@@ -11,7 +11,7 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import logo from "../imagenes/mylogofinal.png"
+import logo from "../imagenes/logo3.png"
 import icon from "../imagenes/iconlogin.png"
 
 const pages = ['Home', 'Cities'];
@@ -37,11 +37,11 @@ const ResponsiveAppBar = () => {
   };
 
   return (
-    <AppBar position="static" className='navBar'>
+    <AppBar position="fixed" className='navBar'>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography>
-            <img src={logo} alt = "logo" width= {150}  />
+            <img src={logo} alt = "logo" width= {100}  />
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton

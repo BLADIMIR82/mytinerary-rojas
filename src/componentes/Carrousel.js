@@ -22,17 +22,37 @@ import { Grid, Autoplay, Pagination, Navigation } from "swiper";
 
 // import required modules
 
-export default function App() {
+export default function Carrousel() {
   return (
     <div className="carro">
+      <h1 className="title">Popular MYtineraries</h1>
     <>
       <Swiper
+      breakpoints={{
+        0: {
+          slidesPerView: 1,
+          slidesPerGroup: 1,
+          grid:{
+            rows: 2,
+          },
+          spaceBetween:6,
+        },
+      
+        768: {
+          slidesPerView: 2,
+              slidesPerGroup: 2,
+              grid:{
+                rows: 2,
+              },
+              spaceBetween:6,
+        }
+      }}
         slidesPerView={2}
         slidesPerGroup={2}
         grid={{
           rows: 2
         }}
-        spaceBetween={2}
+        spaceBetween={6}
         pagination={{ clickable: true }}
         navigation={true}
         modules={[Grid, Pagination, Autoplay, Pagination, Navigation]}
@@ -44,9 +64,10 @@ export default function App() {
         className="mySwiper"
       >
         {cities.map(evento =>
+        
             <SwiperSlide>
            <img className="imagenes" src={process.env.PUBLIC_URL+ `/imagenes/${evento.image}`} />
-            {evento.name}
+           <p className="title-card"> {evento.name} </p>
             </SwiperSlide>
           )}
       
@@ -58,13 +79,3 @@ export default function App() {
 
 
 
-// {cities.map(evento =>
-//   //           <SwiperSlide>
-//   //          <img className="imagenes" src={process.env.PUBLIC_URL+ `/imagenes/${evento.image}`} />
-//   //           {evento.name}
-//   //           </SwiperSlide>
-//   //         )}
-
-// import cities from "./datos"
-{/* <div className="carro">
-  </div> */}
