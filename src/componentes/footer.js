@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"
 import {
   MDBFooter,
   MDBContainer,
@@ -6,7 +6,7 @@ import {
   MDBInput,
   MDBCol,
   MDBRow,
-  MDBRipple,
+  MDBRipple
 } from "mdb-react-ui-kit";
 
 export default function Footer() {
@@ -17,6 +17,23 @@ export default function Footer() {
     >
       <MDBContainer className="p-4">
         <section className="">
+          <div class="pb-3 col-example">
+            {" "}
+            <a
+              className="btn btn-outline-dark btn-floating m-1"
+              href="#!"
+              role="button"
+            >
+              Home
+            </a>
+            <a
+              className="btn btn-outline-dark btn-floating m-1"
+              href="#!"
+              role="button"
+            >
+              Cities
+            </a>
+          </div>
           <MDBRow>
             <MDBCol lg="2" md="12" className="mb-4 mb-md-0">
               <MDBRipple
@@ -123,28 +140,14 @@ export default function Footer() {
           </MDBRow>
         </section>
       </MDBContainer>
-      <a
-        className="btn btn-outline-dark btn-floating m-1"
-        href="#!"
-        role="button"
-      >
-        Home
-        <MDBIcon fab icon="twitter" />
-      </a>
-      <a
-        className="btn btn-outline-dark btn-floating m-1"
-        href="#!"
-        role="button"
-      >
-        Cities
-        <MDBIcon fab icon="twitter" />
-      </a>
-
       <div
         className="text-center p-3"
         style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}
       >
-       <p className="text-black"> © 2022 Copyright | Bladimir Rojas | MindHub</p>
+        <p className="text-black pt-2">
+          {" "}
+          © 2022 Copyright | Bladimir Rojas | MindHub
+        </p>
       </div>
     </MDBFooter>
   );
