@@ -13,8 +13,12 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import logo from "../imagenes/logo3.png"
 import icon from "../imagenes/iconlogin.png"
+import {Link as LinkRouter} from "react-router-dom"
 
-const pages = ['Home', 'Cities'];
+const pages = [
+<LinkRouter className='buttomlink1'to="home">Home</LinkRouter>,  
+<LinkRouter className='buttomlink1' to="cities">Cities</LinkRouter>
+];
 const settings = ['Login',  'Logout', 'Account'];
 
 const ResponsiveAppBar = () => {

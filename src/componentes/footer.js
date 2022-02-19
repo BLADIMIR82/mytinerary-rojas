@@ -1,4 +1,5 @@
 import React from "react"
+import {Link as LinkRouter} from "react-router-dom"
 import {
   MDBFooter,
   MDBContainer,
@@ -24,14 +25,14 @@ export default function Footer() {
               href="#!"
               role="button"
             >
-              Home
+               <LinkRouter className='buttomlink2' to="home">Home</LinkRouter>
             </a>
             <a
               className="btn btn-outline-dark btn-floating m-1"
               href="#!"
               role="button"
             >
-              Cities
+              <LinkRouter className='buttomlink2' to="cities"> Cities </LinkRouter>
             </a>
           </div>
           <MDBRow>
@@ -40,10 +41,12 @@ export default function Footer() {
                 rippleColor="light"
                 className="bg-image hover-overlay shadow-1-strong rounded"
               >
+                <LinkRouter to="cities">  
                 <img
                   src="https://mdbcdn.b-cdn.net/img/new/fluid/city/113.webp"
                   className="w-100"
-                />
+                  />
+                  </LinkRouter>
                 <a href="#!">
                   <div
                     className="mask"
@@ -57,10 +60,12 @@ export default function Footer() {
                 rippleColor="light"
                 className="bg-image hover-overlay shadow-1-strong rounded"
               >
+                <LinkRouter to="cities">
                 <img
                   src="https://mdbcdn.b-cdn.net/img/new/fluid/city/111.webp"
                   className="w-100"
                 />
+                </LinkRouter>
                 <a href="#!">
                   <div
                     className="mask"
@@ -73,11 +78,12 @@ export default function Footer() {
               <MDBRipple
                 rippleColor="light"
                 className="bg-image hover-overlay shadow-1-strong rounded"
-              >
+              > <LinkRouter to="cities">
                 <img
                   src="https://mdbcdn.b-cdn.net/img/new/fluid/city/112.webp"
                   className="w-100"
                 />
+                </LinkRouter>
                 <a href="#!">
                   <div
                     className="mask"
@@ -91,10 +97,12 @@ export default function Footer() {
                 rippleColor="light"
                 className="bg-image hover-overlay shadow-1-strong rounded"
               >
+                <LinkRouter to="cities">
                 <img
                   src="https://mdbcdn.b-cdn.net/img/new/fluid/city/114.webp"
                   className="w-100"
                 />
+                </LinkRouter>
                 <a href="#!">
                   <div
                     className="mask"
@@ -107,11 +115,13 @@ export default function Footer() {
               <MDBRipple
                 rippleColor="light"
                 className="bg-image hover-overlay shadow-1-strong rounded"
-              >
+              > 
+              <LinkRouter to="cities">
                 <img
                   src="https://mdbcdn.b-cdn.net/img/new/fluid/city/115.webp"
                   className="w-100"
                 />
+                </LinkRouter>
                 <a href="#!">
                   <div
                     className="mask"
@@ -124,11 +134,12 @@ export default function Footer() {
               <MDBRipple
                 rippleColor="light"
                 className="bg-image hover-overlay shadow-1-strong rounded"
-              >
+              > <LinkRouter to="cities">
                 <img
                   src="https://mdbcdn.b-cdn.net/img/new/fluid/city/116.webp"
                   className="w-100"
                 />
+                </LinkRouter>
                 <a href="#!">
                   <div
                     className="mask"
@@ -144,7 +155,7 @@ export default function Footer() {
         className="text-center p-3"
         style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}
       >
-        <p className="text-black pt-2">
+        <p className="text-black pt-3">
           {" "}
           © 2022 Copyright | Bladimir Rojas | MindHub
         </p>

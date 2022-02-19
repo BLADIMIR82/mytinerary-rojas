@@ -67,7 +67,7 @@ export default function Carrousel() {
         
             <SwiperSlide>
            <img className="imagenes" src={process.env.PUBLIC_URL+ `/imagenes/${evento.image}`} />
-           <p className="title-card"> {evento.name} </p>
+            <a className="title-card"> {evento.name}</a>
             </SwiperSlide>
           )}
       
