@@ -5,22 +5,25 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import {useParams} from 'react-router-dom'
 import cities from "./datos"
-import {Link as LinkRouter} from "react-router-dom"
+
 
 export default function Cards() {
+    const {id} = useParams()
+    const card1 = cities.filter(dato=> dato.id == id)
+
   return (
-      <div className= "cardsninamics">
-    {cities.map(evento=>
-    <Card sx={{ maxWidth: 345 }}>
+      <div className= "cardsDetalle">
+    {card1?.map(evento=>
+    <Card sx={{ maxWidth: 300 }}>
       <CardMedia
         component="img"
-        height="140"
+        height="100"
         img className="imagenes" src={process.env.PUBLIC_URL+ `/imagenes/${evento.image}`} />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-        <LinkRouter className='buttomlink2' to={`detalles/${evento.id}`}>{evento.name}</LinkRouter>
-         
+         {evento.name}
         </Typography>
       </CardContent>
       <CardActions>
