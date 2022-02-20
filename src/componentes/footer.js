@@ -138,17 +138,26 @@ export default function Footer() {
                 <img
                   src="https://mdbcdn.b-cdn.net/img/new/fluid/city/116.webp"
                   className="w-100"
+                  
                 />
                 </LinkRouter>
+               
                 <a href="#!">
                   <div
                     className="mask"
                     style={{ backgroundColor: "rgba(251, 251, 251, 0.2)" }}
-                  ></div>
+                  >
+                  </div>
                 </a>
               </MDBRipple>
             </MDBCol>
           </MDBRow>
+                <div className="iconsocial">
+                <img src="./imagenes/logofacebook.png" alt="img"  className="iconsocials" />
+                <img src="./imagenes/instagram.png" alt="img"  className="iconsocials" />
+                <img src="./imagenes/youtube.png" alt="img"  className="iconsocials" />
+                <img src="./imagenes/twitter.png" alt="img"  className="iconsocials" />
+                </div>
         </section>
       </MDBContainer>
       <div

@@ -9,41 +9,81 @@
 .navBar {
   background-color: rgba(179, 180, 178, 0) !important;
 }
+
+/* From cssbuttons.io by @marcos700x */
 .butt{
-  color:black !important;
-  border: 0.1rem solid black !important;
-  border-radius: 1rem !important;
-  margin-right:  1rem !important;
-  background-color: rgba(192, 188, 188, 0.63) !important;
-  text-decoration: none !important;
-  width: 3rem !important;
-}
-.butt:hover{
-  background-color: black !important;
-  color: white !important;
-  font-size: 1rem !important;
+  background-color: rgba(201, 193, 193, 0.753) !important;
+  z-index: 1;
+  position: relative;
+  overflow: hidden;
+  color: black;
+  border: 1px solid black !important;
+  margin-left: 1rem !important;
+  padding: 10px 20px;
+  font-family: Arial;
+  font-weight: 800;
+  font-size: 2rem;
+  border-radius: 15px !important;
+  width: 6rem;
+  transition: transform .3s ease, color .5s ease;
+  text-transform:capitalize !important;
+ }
+ 
+ .butt::before {
+  content: '';
+  inset: 0 0 0 0;
+  margin: auto;
+  height: 0px;
+  width: 0px;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.87);
+  z-index: -1;
+  border-radius: 50%;
+  transition: all .7s ease;
+ }
+ 
+ .butt:active {
+  transform: scale(.9);
   
-}
+ }
+ 
+ .butt:hover {
+  color: rgb(255, 253, 253);
+   
+ }
+ 
+ .butt:hover:before {
+  height: 200px;
+  width: 200px;
+  color: rgb(250, 244, 244);
+ }
+
 
 .carro{
 display:flex;
 flex-direction: column;
-width: 100%;
-height: 130vh;
-padding: 1rem 5rem;
+width:100%;
+height: 120vh;
+padding: 1rem 8rem;
 justify-content: center;
 background-color: rgb(37, 36, 36);
 }
 .imagenes{
   width: 100%;
-  height: 92%;
+  height: 86%;
 }
 .title-card{
-  padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
   text-decoration: none;
   color: black;
   cursor: pointer;
+  height: 14%;
 }
+.title-card:hover{
+  color: black;
+  font-size: 1.6rem;
+}
+
 
 .title{
   text-align: center;
@@ -53,9 +93,10 @@ background-color: rgb(37, 36, 36);
 }
 
 .hero{
-  height: 130vh;
+  height: 120vh;
   background-size:cover;
   background-position:center;
+  border-bottom: 0.05rem solid white;
 }
 .article-hero{
   text-align: center; 
@@ -70,7 +111,7 @@ background-color: rgb(37, 36, 36);
  padding: 14rem 4rem;
 }
 .call{
-  height: 130vh;
+  height: 120vh;
   background-size:cover;
   background-position: center;
 }
@@ -96,14 +137,100 @@ background-color: rgb(37, 36, 36);
 
 .cardsninamics{
   display: flex;
-  flex-wrap: wrap;
+ flex-direction: column;
+  width: 90%;
+  height:80%;
+}
+
+button {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+  border: 0;
+  vertical-align: middle;
+  text-decoration: none;
+  background: transparent;
+  padding: 0;
+  font-size: inherit;
+  font-family: inherit;
+ }
+ 
+ button.learn-more {
+  width: 12rem;
+  height: auto;
+ }
+ 
+ button.learn-more .circle {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  position: relative;
+  display: block;
+  margin: 0;
+  width: 3rem;
+  height: 3rem;
+  background: #282936;
+  border-radius: 1.625rem;
+ }
+ 
+ button.learn-more .circle .icon {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  background: #fff;
+ }
+ 
+ button.learn-more .circle .icon.arrow {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  left: 0.625rem;
+  width: 1.125rem;
+  height: 0.125rem;
+  background: none;
+ }
+ 
+ button.learn-more .circle .icon.arrow::before {
+  position: absolute;
+  content: "";
+  top: -0.29rem;
+  right: 0.0625rem;
+  width: 0.625rem;
+  height: 0.625rem;
+  border-top: 0.125rem solid #fff;
+  border-right: 0.125rem solid #fff;
+  transform: rotate(45deg);
+ }
+ 
+ button.learn-more .button-text {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.55rem 0;
+  margin: 0 0 0 1.85rem;
+  color: #282936;
+  font-weight: 700;
+  line-height: 1.7;
+  text-align: center;
+  font-size: 1.2rem;
+  font-family: 'Open Sans', sans-serif;
+ }
+ 
+ button:hover .circle {
   width: 100%;
-  height: 400vh;
-}
-.buttomlink{
-  text-decoration: none !important;
-  color:white;
-}
+ }
+ 
+ button:hover .circle .icon.arrow {
+  background: #fff;
+  transform: translate(1rem, 0);
+ }
+ 
+ button:hover .button-text {
+  color: #fff;
+ }
+
 .buttomlink1{
   text-decoration: none !important;
   color: black;
@@ -119,4 +246,42 @@ background-color: rgb(37, 36, 36);
 .buttomlink2:hover{
   color: white;
   font-size: 1.1rem;
+}
+.iconsocial{
+height: 10vh;
+padding-top: 1.5rem;
+width: 100%;
+}
+.iconsocials{
+  height: 3rem;
+  padding-left: 1rem  ;
+}
+
+@media only screen and (max-width: 768px) {
+p{
+  font-size: 1.8rem;
+
+}
+.hero{
+  background-position:initial;
+  height: 100vh;
+}
+.call{
+  background-position:initial;
+  height: 100vh;
+}
+.article-hero{
+  background-size: 9rem;
+  background-position:top;
+  padding-top: 9rem;
+}
+.article-call{
+  padding: 9rem 2rem;
+  
+}
+.title{
+font-size: 2rem;
+text-align: center;
+}
+  
 }

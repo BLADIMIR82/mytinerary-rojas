@@ -14,7 +14,7 @@ import React, { useRef, useState } from "react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-
+import {Link as LinkRouter} from "react-router-dom"
 import "../style/style.css";
 import cities from "../componentes/datos.js"
 // import required modules
@@ -25,7 +25,9 @@ import { Grid, Autoplay, Pagination, Navigation } from "swiper";
 export default function Carrousel() {
   return (
     <div className="carro">
+      <div>
       <h1 className="title">Popular MYtineraries</h1>
+      </div>
     <>
       <Swiper
       breakpoints={{
@@ -52,24 +54,28 @@ export default function Carrousel() {
         grid={{
           rows: 2
         }}
-        spaceBetween={6}
+        spaceBetween={2}
         pagination={{ clickable: true }}
         navigation={true}
         modules={[Grid, Pagination, Autoplay, Pagination, Navigation]}
         className="mySwiper"
         autoplay={{
-          delay: 2500,
+          delay: 4000,
           disableOnInteraction: false
         }}
         className="mySwiper"
       >
+        <div className="cards-carrousell">
         {cities.map(evento =>
-        
+            
+            <div className="cards-carrousell">
             <SwiperSlide>
            <img className="imagenes" src={process.env.PUBLIC_URL+ `/imagenes/${evento.image}`} />
-            <a className="title-card"> {evento.name}</a>
+            <LinkRouter className="title-card" to={`detalle/${evento.id}`}>{evento.name}</LinkRouter>
             </SwiperSlide>
+            </div>
           )}
+          </div>
       
       </Swiper>
     </>

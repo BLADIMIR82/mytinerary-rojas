@@ -1,12 +1,18 @@
-import React from 'react';
-import { MDBBtn } from 'mdb-react-ui-kit';
 import {Link as LinkRouter} from "react-router-dom"
 
 export default function Button() {
   return (
-    <MDBBtn  color="dark" className='mx-2' td= "none">
-       <LinkRouter className='buttomlink' to="cities"> Cities </LinkRouter>
-      </MDBBtn>
-      
+    <LinkRouter to= "cities">
+    <button class="learn-more">
+    <span class="circle" aria-hidden="true">
+    <span class="icon arrow"></span>
+    </span>
+    <span class="button-text">Cities</span>
+  </button>
+   </LinkRouter>
   );
 }
+
+
+
+

@@ -15,17 +15,18 @@ export default function Cards() {
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
         component="img"
-        height="140"
+        height="100"
         img className="imagenes" src={process.env.PUBLIC_URL+ `/imagenes/${evento.image}`} />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-        <LinkRouter className='buttomlink2' to={`detalles/${evento.id}`}>{evento.name}</LinkRouter>
+        <LinkRouter className='buttomlink2' to={`detalle/${evento.id}`}>{evento.name}</LinkRouter>
          
         </Typography>
       </CardContent>
       <CardActions>
         <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
+        <LinkRouter className='buttomlink2' to={`detalle:id/${evento.id}`}><Button size="small">Learn More</Button></LinkRouter>
+         
       </CardActions>
     </Card>
     )}
