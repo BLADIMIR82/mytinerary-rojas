@@ -153,10 +153,10 @@ export default function Footer() {
             </MDBCol>
           </MDBRow>
                 <div className="iconsocial">
-                <img src="./imagenes/logofacebook.png" alt="img"  className="iconsocials" />
-                <img src="./imagenes/instagram.png" alt="img"  className="iconsocials" />
-                <img src="./imagenes/youtube.png" alt="img"  className="iconsocials" />
-                <img src="./imagenes/twitter.png" alt="img"  className="iconsocials" />
+              <a href="https://www.facebook.com/"><img src="./imagenes/logofacebook.png" alt="img"  className="iconsocials" /></a>
+               <a href="https://www.instagram.com/accounts/login/?hl=es&sour..."> <img src="./imagenes/instagram.png" alt="img"  className="iconsocials" /> </a>
+                <a href= "https://www.youtube.com/"> <img src="./imagenes/youtube.png" alt="img"  className="iconsocials" /></a>
+                <a href="https://mobile.twitter.com/i/flow/login"><img src="./imagenes/twitter.png" alt="img"  className="iconsocials" /> </a>
                 </div>
         </section>
       </MDBContainer>
