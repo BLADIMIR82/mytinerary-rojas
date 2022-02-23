@@ -1,26 +1,16 @@
-// Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/grid";
 import "swiper/css/pagination";
-
-
 import React, { useRef, useState } from "react";
-// Import Swiper React components
-
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import {Link as LinkRouter} from "react-router-dom"
 import "../style/style.css";
 import cities from "../componentes/datos.js"
-// import required modules
 import { Grid, Autoplay, Pagination, Navigation } from "swiper";
 
-// import required modules
 
 export default function Carrousel() {
   return (

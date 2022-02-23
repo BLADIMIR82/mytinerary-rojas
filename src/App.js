@@ -3,7 +3,7 @@ import ResponsiveAppBar from "./componentes/Navbar";
 import Footer from "./componentes/footer"
 import "bootstrap/dist/css/bootstrap.min.css";
 import Home from "./pages/home"
-import cardsDetalle from "./componentes/detalle"
+import CardsDetalle from "./componentes/detalle"
 import Cities from "./pages/cities"
 import {
   BrowserRouter,
@@ -20,7 +20,7 @@ function App() {
       <Routes>
       <Route path="*" element ={<Home />} /> 
       <Route path="/cities" element ={<Cities />} />
-      <Route path="/cards/detalle/:id" element ={<cardsDetalle/>} />
+      <Route path="detalle/:id" element ={<CardsDetalle />} />
       
       </Routes>
       <Footer />

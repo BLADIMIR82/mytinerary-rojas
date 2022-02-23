@@ -9,7 +9,7 @@ import cities from "./datos"
 import {useParams} from 'react-router-dom'
 
 
-export default function Cards() {
+export default function CardsDetalle() {
     const {id} = useParams()
     const card1 = cities.filter(dato=> dato.id == id)
 
@@ -17,18 +17,13 @@ export default function Cards() {
       <div className= "cardsDetalle">
     {card1?.map(evento=>
     <Card sx={{ maxWidth: 300 }}>
-      <CardMedia
-        component="img"
-        height="100"
-        img className="imagenes" src={process.env.PUBLIC_URL+ `/imagenes/${evento.image}`} />
+        <img className="imagenes" src={process.env.PUBLIC_URL+ `/imagenes/${evento.image}`} />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
          {evento.name}
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
       </CardActions>
     </Card>
     )}
