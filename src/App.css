@@ -91,9 +91,12 @@ background-color: rgb(37, 36, 36);
   font-size: 3rem;
   color: white;
 }
-
+.logo{
+  height: 7rem;
+  margin-left: 2rem;
+}
 .hero{
-  height: 120vh;
+  height: 110vh;
   background-size:cover;
   background-position:center;
   border-bottom: 0.05rem solid white;
@@ -103,15 +106,15 @@ background-color: rgb(37, 36, 36);
   font-size: 3rem;
   padding-top: 12rem;
   background-image: url(./imagenes/logo3.png);
-  background-size: 14rem;
+  background-size: 8rem;
   background-position: top;
   background-repeat: no-repeat;
   height: 10rem;
   color: black;
- padding: 14rem 4rem;
+ padding: 10rem 4rem;
 }
 .call{
-  height: 120vh;
+  height: 110vh;
   background-size:cover;
   background-position: center;
 }
@@ -140,18 +143,19 @@ background-color: rgb(37, 36, 36);
   flex-wrap: wrap;
   min-height: auto;
   justify-content: center;
-  background-color: rgba(58, 57, 57, 0.739);
+  background-color: rgb(37, 36, 36);
   padding-bottom: 2rem;
  
 }
 
 .cardsdinamics1{
   border: 1px solid white;
-  height: 60vh;
-  width: 30vw;
+  height: 50vh;
+  width: 40vw;
   background: rgb(206, 203, 203);
   text-align: center;
   border-radius: 2rem;
+  margin: 0.5rem;
   
 }
 
@@ -162,6 +166,7 @@ background-color: rgb(37, 36, 36);
  .imagenescard{
    width: 100%;
    height: 89%;
+   border-radius: 2rem 2rem 0  0;
  }
 
  .title-cardcities{
@@ -179,7 +184,7 @@ background-color: rgb(37, 36, 36);
   margin-top: 1rem;
 }
 .divinput{
-  background-color: rgba(58, 57, 57, 0.739);
+  background-color: rgb(37, 36, 36);
   text-align: center;
   padding-top: 3rem;
   height: 7rem;
@@ -364,9 +369,9 @@ p{
   height: 100vh;
 }
 .article-hero{
-  background-size: 9rem;
+  background-size: 5rem;
   background-position:top;
-  padding-top: 9rem;
+  padding-top: 7rem;
 }
 .article-call{
   padding: 9rem 2rem;
@@ -382,6 +387,9 @@ text-align: center;
   /* padding-bottom: 1rem; */
   text-align: center !important
   ;
+}
+.logo{
+  visibility: hidden;
 }
   
 }

@@ -44,8 +44,8 @@ const ResponsiveAppBar = () => {
     <AppBar position="fixed" className='navBar'>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Typography>
-            <img src={logo} alt = "logo" width= {100}  />
+          <Typography className='logo'>
+            <img src={logo} alt = "logo" width= {90}  />
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton

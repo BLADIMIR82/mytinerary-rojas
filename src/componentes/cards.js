@@ -16,8 +16,8 @@ export default function Cards() {
           <p>Cities</p>
           </div>
     {cities.map(evento=>
-      <Card sx={{ maxWidth: 400}}>
         <div className='cardsdinamics1'>
+      
        <LinkRouter  to={`/detalle/${evento.id}`}> <img className="imagenescard" src={process.env.PUBLIC_URL+ `/imagenes/${evento.image}`} /></LinkRouter>
      <CardContent >
         <Typography gutterBottom variant="h5" component="div">
@@ -29,7 +29,7 @@ export default function Cards() {
       </CardContent>
      
       </div>
-      </Card>
+      
     )}
     </div>
   )
