@@ -94,6 +94,7 @@ background-color: rgb(37, 36, 36);
 .logo{
   height: 7rem;
   margin-left: 2rem;
+  cursor:pointer;
 }
 .hero{
   height: 110vh;

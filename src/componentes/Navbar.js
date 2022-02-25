@@ -45,7 +45,7 @@ const ResponsiveAppBar = () => {
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography className='logo'>
-            <img src={logo} alt = "logo" width= {90}  />
+           <LinkRouter to="Home"> <img src={logo} alt = "logo" width= {90}  /></LinkRouter>
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
