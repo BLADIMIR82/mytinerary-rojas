@@ -7,9 +7,9 @@ import { useEffect,useState } from "react";
 import axios from "axios"
 
 function Cities() {
-  // useEffect(() => {
-  //   window.scrollTo(0, 0)
-  // }, [])
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   const [input,setInput]=useState()
   const [apidata, setApiData ]= useState([])

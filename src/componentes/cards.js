@@ -16,11 +16,12 @@ export default function Cards(props) {
       
       axios.get("http://localhost:4000/api/allcities")
       .then(respuesta=>setData(respuesta.data.response.ciudades))
+
     }else{
       setData(props.search)
     }
 
-    console.log(data)
+  
   },[props.search])
 
 
@@ -30,7 +31,7 @@ export default function Cards(props) {
           <div className='titlecities'>
           <p>Cities</p>
           </div>
-    {data?.map(evento=>
+    {data?.length !== 0?( data?.map(evento=>
         <div className='cardsdinamics1'>
       
        <LinkRouter  to={`/detalle/${evento.id}`}> <img className="imagenescard" src={process.env.PUBLIC_URL+ `/imagenes/${evento.image}`} /></LinkRouter>
@@ -45,7 +46,7 @@ export default function Cards(props) {
      
       </div>
       
-    )}
+    )):<h1>Ciudad no Encontrada</h1>}
     </div>
   )
 }

@@ -14,7 +14,9 @@ export default function CardsDetalle() {
     const card1 = cities.filter(dato=> dato.id == id)
 
   return (
-      <div className= "cardsDetalle">
+    
+    <div className= "cardsDetalle">
+        <img src="../imagenes/under.jpg" width={600} alt='img'></img>
     {card1?.map(evento=>
     <Card sx={{ maxWidth: 300 }}>
         <img className="imagenes" src={process.env.PUBLIC_URL+ `/imagenes/${evento.image}`} />
