@@ -5,13 +5,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Home from "./pages/home"
 import CardsDetalle from "./componentes/detalle"
 import Cities from "./pages/cities"
-import {
-  BrowserRouter,
-  Routes,
-  Route
-} from "react-router-dom";
+import {BrowserRouter,Routes,Route} from "react-router-dom";
 
 function App() {
+  
+
   return (
        <BrowserRouter>
      <div clasName="App">

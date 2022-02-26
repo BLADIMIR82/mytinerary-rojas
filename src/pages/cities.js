@@ -1,25 +1,49 @@
-import { width } from "@mui/system";
+
 import Cards from "../componentes/cards"
 import WelcomeCities from "../componentes/welcomecities";
 import ButtonHome from "../componentes/buttomhome"
-import InputSearch from "../componentes/input"
-import React, {useEffect} from "react";
-import Counter from "../componentes/example"
-
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import { useEffect,useState } from "react";
+import axios from "axios"
 
 function Cities() {
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
+  // useEffect(() => {
+  //   window.scrollTo(0, 0)
+  // }, [])
+
+  const [input,setInput]=useState()
+  const [apidata, setApiData ]= useState([])
+
+  useEffect(()=>{
+
+  axios.get(`http://localhost:4000/api/allcities`)
+  .then(respuesta=>setApiData(respuesta.data.response.ciudades))
+},[]) 
+
+function filterCards (event) {
+
+  setInput(apidata.filter(city=> city.name.toLowerCase().startsWith(event.target.value.toLowerCase().trim())))
+
+}
+
   return (
-     <div>
+     
+    <div>
+
       <ButtonHome />
       <WelcomeCities/>
-      <InputSearch />
-      <Counter />
-      < Cards />
+
+      
+      <div  className="divinput" >
+       <input onKeyUp={filterCards} className="input1" type="text" placeholder="Search City !!" /> 
+      </div>
+     
+     
+      < Cards search={input} />
+      
       
      </div>
+    
    
   );
 }
