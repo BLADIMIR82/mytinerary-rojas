@@ -1,11 +1,10 @@
 import * as React from 'react';
-import Card from '@mui/material/Card';
-
 import CardContent from '@mui/material/CardContent'; 
 import Typography from '@mui/material/Typography';
 import {Link as LinkRouter} from "react-router-dom"
 import { useEffect,useState } from "react";
 import axios from "axios"
+import Loader from "../componentes/loader"
 
 export default function Cards(props) {
 
@@ -34,11 +33,11 @@ export default function Cards(props) {
     {data?.length !== 0?( data?.map(evento=>
         <div className='cardsdinamics1'>
       
-       <LinkRouter  to={`/detalle/${evento.id}`}> <img className="imagenescard" src={process.env.PUBLIC_URL+ `/imagenes/${evento.image}`} /></LinkRouter>
+       <LinkRouter  to={`/detalle/${evento._id}`}> <img className="imagenescard" src={process.env.PUBLIC_URL+ `/imagenes/${evento.image}`} /></LinkRouter>
      <CardContent >
         <Typography gutterBottom variant="h5" component="div">
           <div className="title-cardcities">
-         <LinkRouter className="title-card" to={`/detalle/${evento.id}`}>{evento.name}</LinkRouter>
+         <LinkRouter className="title-card" to={`/detalle/${evento._id}`}>{evento.name}</LinkRouter>
          </div>
         </Typography>
 
@@ -46,7 +45,7 @@ export default function Cards(props) {
      
       </div>
       
-    )):<h1>Ciudad no Encontrada</h1>}
+    )):<Loader />}
     </div>
   )
 }

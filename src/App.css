@@ -148,6 +148,21 @@ background-color: rgb(37, 36, 36);
   padding-bottom: 2rem;
  
 }
+.cardsDetalle{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+   background-color: rgb(156, 160, 160);
+}
+.cardsid{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  
+  height: auto;
+  width: 60rem;
+}
 
 .cardsdinamics1{
   border: 1px solid white;
@@ -201,6 +216,18 @@ background-color: rgb(37, 36, 36);
   text-align: center;
   border-top: none;
   border-left: none;
+}
+.loader{
+  width: 80%;
+  height: 9rem;
+ background-image: url(./imagenes/loader);
+ background-repeat: no-repeat;
+ background-size: cover;
+ background-position: center;
+  text-align: center;
+  border-radius: 2rem;
+ color: white;
+  padding: 0.5rem;
 }
 
 
