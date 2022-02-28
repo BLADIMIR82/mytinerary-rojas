@@ -7,15 +7,14 @@ import axios from "axios"
 
 export default function CardsDetalle() {
     const {id} = useParams()
-    // const card1 = cities.filter(dato=> dato.id == id)
+    
 
-    const [data, setData] = useState([])
-    console.log(data)
+    const [data, setData] = useState()
+   
     useEffect(()=>{
-    axios.get(`http://localhost:4000/api/allcities/?`)
-
-    .then(respuesta=>setData(respuesta.data.response.ciudadesfilter(cities => cities._id === id)))
-  },[id])
+    axios.get(`http://localhost:4000/api/allcities`)
+    .then(respuesta=>setData(respuesta.data.response.ciudades.filter(cities => cities._id === id)))
+  },[])
 
   return (
     

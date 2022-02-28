@@ -16,6 +16,7 @@ export default function Cards(props) {
       axios.get("http://localhost:4000/api/allcities")
       .then(respuesta=>setData(respuesta.data.response.ciudades))
 
+
     }else{
       setData(props.search)
     }
