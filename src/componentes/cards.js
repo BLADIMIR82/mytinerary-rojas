@@ -35,15 +35,11 @@ export default function Cards(props) {
         <div className='cardsdinamics1'>
       
        <LinkRouter  to={`/detalle/${evento._id}`}> <img className="imagenescard" src={process.env.PUBLIC_URL+ `/imagenes/${evento.image}`} /></LinkRouter>
-     <CardContent >
-        <Typography gutterBottom variant="h5" component="div">
+        
           <div className="title-cardcities">
          <LinkRouter className="title-card" to={`/detalle/${evento._id}`}>{evento.name}</LinkRouter>
          </div>
-        </Typography>
 
-      </CardContent>
-     
       </div>
       
     )):<Loader />}

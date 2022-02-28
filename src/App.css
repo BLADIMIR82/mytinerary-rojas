@@ -73,11 +73,11 @@ background-color: rgb(37, 36, 36);
   height: 42.1vh;
 }
 .title-card{
-  padding-top: 0.5rem;
   text-decoration: none;
   color: black;
   cursor: pointer;
   height: 7vh;
+ 
 }
 .title-card:hover{
   color: black;
@@ -159,6 +159,8 @@ background-color: rgb(37, 36, 36);
   flex-direction: column;
   flex-wrap: nowrap;
   justify-content: center;
+  text-align: center;
+  font-size: 1.2rem;
   
   height: auto;
   width: 60rem;
@@ -166,12 +168,15 @@ background-color: rgb(37, 36, 36);
 
 .cardsdinamics1{
   border: 1px solid white;
-  height: 50vh;
+  height: 52vh;
   width: 40vw;
   background: rgb(206, 203, 203);
   text-align: center;
   border-radius: 2rem;
   margin: 0.5rem;
+  box-shadow: 0.3em 0.3em 0.7em #00000015;
+  transition: border 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: rgb(250, 250, 250) 0.2em solid;
   
 }
 
@@ -181,15 +186,27 @@ background-color: rgb(37, 36, 36);
 
  .imagenescard{
    width: 100%;
-   height: 89%;
+   height: 88%;
    border-radius: 2rem 2rem 0  0;
+   box-shadow: 0.2em 0.2em 0.7em #00000015;
+ transition: border 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+ border: rgb(250, 250, 250) 0.2em solid;
+ }
+
+ .imagenescard:hover{
+  border: #006fff 0.3em solid;
  }
 
  .title-cardcities{
-   height: 10%;
+   height: 12%;
    width: 100%;
-   
+   font-size: 1.8rem;
+   background-color: #aaaaac;
+   border-radius: 0 0  2rem 2rem;
+   text-align: center;
+   margin-bottom: 0.5rem;
   }
+
 
 .titlecities{
   height: 6rem;
@@ -418,6 +435,33 @@ text-align: center;
 }
 .logo{
   visibility: hidden;
+}
+.cardsninamics{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.cardsdinamics1{
+  width: 70vw;
+}
+.input1{
+width: 80vw;
+}
+.video1{
+  background-position:inherit;
+}
+.buttomhome{
+  
+  bottom:16rem;
+  left: 6rem;
+  z-index: 2;
+}
+.cards-carrousell{
+  width: 50vw;
+
+}
+.carro{
+padding: 0 3rem;
 }
   
 }
