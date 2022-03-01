@@ -19,17 +19,21 @@ export default function CardsDetalle() {
   return (
     
     <div className= "cardsDetalle">
-        <img src="../imagenes/under.jpg" width={800} alt='img'></img>
     {data?.map(evento=>
-        <div  className='cardsid'>
-        <img className="imagenes" src={process.env.PUBLIC_URL+ `/imagenes/${evento.image}`} />
-         {evento.name}
-         <div>
-         {evento.info}
-         </div>
-      
-      </div>
+
+<div class="cards">
+<div class="card">
+  <h2 class="card-title">{evento.name}</h2>
+  <img src={process.env.PUBLIC_URL+ `/imagenes/${evento.image}`} />
+  <p class="card-desc">{evento.info}</p>
+</div>
+</div>
+
     )}
+     <img src="../imagenes/under.jpg" width={800} alt='img'></img>
     </div>
   )
 }
+
+
+ 
