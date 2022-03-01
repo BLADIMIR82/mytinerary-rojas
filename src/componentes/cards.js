@@ -1,15 +1,13 @@
 import * as React from 'react';
-import CardContent from '@mui/material/CardContent'; 
-import Typography from '@mui/material/Typography';
 import {Link as LinkRouter} from "react-router-dom"
 import { useEffect,useState } from "react";
 import axios from "axios"
 import Loader from "../componentes/loader"
 
 export default function Cards(props) {
-
+console.log(props)
   const [data, setData] = useState()
-  console.log(props.search)
+   
   useEffect(()=>{
     if(props.search === undefined){
       

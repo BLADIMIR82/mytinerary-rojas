@@ -6,6 +6,11 @@ import axios from "axios"
 
 
 export default function CardsDetalle() {
+  
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
     const {id} = useParams()
     
 
@@ -14,7 +19,7 @@ export default function CardsDetalle() {
     useEffect(()=>{
     axios.get(`http://localhost:4000/api/allcities`)
     .then(respuesta=>setData(respuesta.data.response.ciudades.filter(cities => cities._id === id)))
-  },[])
+  })
 
   return (
     
