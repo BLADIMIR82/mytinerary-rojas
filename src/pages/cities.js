@@ -12,7 +12,7 @@ function Cities() {
   }, [])
 
   const [input,setInput]=useState()
-  const [apidata, setApiData ]= useState([])
+  const [apidata, setApiData ]= useState()
 
   useEffect(()=>{
 

@@ -5,7 +5,7 @@ import axios from "axios"
 import Loader from "../componentes/loader"
 
 export default function Cards(props) {
-console.log(props)
+// console.log(props)
   const [data, setData] = useState()
    
   useEffect(()=>{

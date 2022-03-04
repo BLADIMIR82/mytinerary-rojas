@@ -42,7 +42,7 @@ const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     // eslint-disable-next-line no-console
-    console.log(data)
+    // console.log(data)
     var dataInput ={
       ciudad: data.get('Ciudad'),
       pais: data.get('Pais'),

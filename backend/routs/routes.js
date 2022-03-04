@@ -1,7 +1,7 @@
 const Router = require('express').Router();
 
 const ciudadesControllers= require('../controllers/ciudadesControllers');
-const {obtenerCiudades, cargarCiudad, borrarCiudad, modificarCiudad}=ciudadesControllers
+const {obtenerCiudades, obtenerUnaCiudad, cargarCiudad, borrarCiudad, modificarCiudad}=ciudadesControllers
 
 Router.route('/allcities')
 .get(obtenerCiudades)
@@ -10,5 +10,6 @@ Router.route('/allcities')
 Router.route('/allcities/:id')
 .delete(borrarCiudad)
 .put(modificarCiudad)
+.get(obtenerUnaCiudad)
 
 module.exports = Router

@@ -152,7 +152,7 @@ background-color: rgb(37, 36, 36);
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgb(156, 160, 160);
+  background-color: #282936;
 }
 .cards {
   display: flex;
@@ -160,16 +160,19 @@ background-color: rgb(37, 36, 36);
   text-align: center;
   font-size: 1.2rem;
   height: auto;
-  width: 70rem;
+  width: 100%;
+  padding: 2rem 2rem;
   border: 1px solid white;
   justify-content: space-around;
   margin-bottom: 2rem;
+  background-color: #282936;
 }
 
 .card {
   width: auto;
   height: auto;
   box-shadow: 0 40px 60px -6px black;
+  border-radius: 2rem;
 }
 
 .card-title {
@@ -203,6 +206,97 @@ background-color: rgb(37, 36, 36);
   opacity: 1;
   height: 100%;
 }
+.tineraries{
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  background-color: #282936;
+  min-height: auto;
+  min-width: 100vw;
+  margin-top: 2rem;
+  
+}
+.titletineraries{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80vw;
+  height: 14vh;
+  padding: 1rem 1rem;
+  border-radius: 1rem;
+  padding-top: 2rem;
+  margin-bottom:2rem;
+
+}
+.infotineraries{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  width: 80vw;
+  text-align: center;
+  border-radius: 1rem;
+  border-radius: 2rem !important;
+}
+.imageuser{
+  width: 100px;
+  height: 100px;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid black;
+  text-align: center;  
+}
+.imageuser img{
+  width: 96.2px;
+  height: 96.2px;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}
+.activities{
+  background-color: #5f6061;
+  width: 80vw;
+  height: 50vh;
+  text-align: center;
+}
+
+.comments{
+  background-image: url(../public/imagenes/under.jpg);
+    width: 78vw;
+    height: 40vh;
+    text-align: center;
+    border: 1px solid black;
+    margin: 1rem;
+    color: red;
+}
+.css-1k3rt34-MuiPaper-root-MuiCard-root {
+  display: flex;
+  flex-direction: column; 
+  flex-wrap: nowrap;
+  width: auto;
+  height: auto;
+  
+}
+.activitiescarrousell{
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  padding: 1rem 1rem;
+  height: 40vh;
+  width: 78vw;
+  margin: 1rem;
+  border: 1px solid black;
+  text-align: center;
+  background-color: #1d7ad6;
+  background-image: url(../public/imagenes/under.jpg);
+  background-repeat:initial;
+  color: red;
+  
+}
+
+
 
 .cardsdinamics1{
   border: 1px solid white;

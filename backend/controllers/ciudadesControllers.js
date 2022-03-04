@@ -19,6 +19,27 @@ res.json({
     error: error
 })
 },
+obtenerUnaCiudad: async (req, res)=>{
+    const id =req.params.id
+    console.log(req.params)
+    
+    let ciudad
+    let error = null
+
+    try{
+        ciudad = await Ciudades.findOne({_id:id})
+        console.log(ciudad)
+    }catch(err){
+        error = err
+        console.log(error)
+    }
+    res.json({
+        response: error ? 'ERROR' : ciudad, 
+        success: error ? false : true,
+        error: error
+    })
+
+},
 cargarCiudad: async(req,res)=>{
     console.log(req.body)
     const {ciudad, pais, descripcion} = req.body.dataInput

@@ -2,9 +2,8 @@ import * as React from 'react';
 import {useParams} from 'react-router-dom'
 import { useEffect,useState } from "react";
 import axios from "axios"
-
-
-
+// import Itiniraries from "./itineraries"
+import RecipeReviewCard from "./itinirariesdos"
 export default function CardsDetalle() {
   
   useEffect(() => {
@@ -33,9 +32,13 @@ export default function CardsDetalle() {
   <p class="card-desc">{evento.info}</p>
 </div>
 </div>
-
     )}
-     <img src="../imagenes/under.jpg" width={800} alt='img'></img>
+    <div>
+{/* <Itiniraries /> */}
+<RecipeReviewCard />
+      
+    </div>
+
     </div>
   )
 }
