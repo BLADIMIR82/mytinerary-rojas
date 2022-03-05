@@ -42,29 +42,33 @@ obtenerUnaCiudad: async (req, res)=>{
 },
 cargarCiudad: async(req,res)=>{
     console.log(req.body)
-    const {ciudad, pais, descripcion} = req.body.dataInput
-    new Ciudades({nombre:ciudad, 
-                 pais:pais,
-                 descripcion: descripcion}).save()
+    const { name, info, image} = req.body.dataInput
+    new Ciudades({ image:image,
+                 name:name,
+                 info:info}).save()
         .then((respuesta) => res.json({respuesta}))
 },
 borrarCiudad: async (req,res)=>{
     const id = req.params.id
-    
-
        await Ciudades.findOneAndDelete({_id:id})
+       .then((respuesta) => res.json({respuesta}))
+
 
 },
-modificarCiudad: async (req, res)=>{
-    const id = req.params.id
-    const ciudad = req.body.dataInput
+modificarCiudad: async (req, res) => {
+    const id = req.params.id;
+    const ciudad = req.body.dataInput;
 
-    let ciudadb = await Ciudades.findOneAndUpdate({_id:id}, ciudad)
-     console.log(ciudadb)
+    let ciudadb = await Ciudades.findOneAndUpdate({ _id: id }, ciudad).then(
+      (respuesta) => res.json({ respuesta })
+    );
+    console.log(ciudadb);
+  },
+     
 
 }
 
-}
+
 
 module.exports =ciudadesControllers
 

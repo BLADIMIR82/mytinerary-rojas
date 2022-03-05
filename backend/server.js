@@ -4,13 +4,14 @@ const express = require("express")
 
 require('./config/database')
 const Router = require("./routs/routes")
+const Routeri = require("./routs/routesitineraries")
 const PORT = 4000
 
 const app = express()
 
 app.use(cors())
 app.use(express.json())
-app.use("/api", Router)
+app.use("/api", Router, Routeri)
 
 
 app.listen(PORT, () => console.log("server ready on port" + PORT))
