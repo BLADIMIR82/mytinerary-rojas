@@ -12,4 +12,37 @@ Router.route('/allcities/:id')
 .put(modificarCiudad)
 .get(obtenerUnaCiudad)
 
+
+
+/////////////////////////////////////////////****///////////////////////////////
+
+
+// const itinerariesControllers= require('../controllers/itinerariesControllers');
+// const {obtenerItinerary, obtenerUnItinerary, cargarItinerary, borrarItinerary, modificarItinerary}=itinerariesControllers
+
+// Router.route('/allitineraries')
+// .get(obtenerItinerary)
+// .post(cargarItinerary)
+
+// Router.route('/allitineraries/:id')
+// .delete(borrarItinerary)
+// .put(modificarItinerary)
+// .get(obtenerUnItinerary)
+
+// module.exports = Router
+
+const itinerariesControllers = require('../controllers/itinerariesControllers')
+const {obtenerItineraries, obtenerUnItinerario, cargarItinerario, borrarItinerario, modificarItinerario} = itinerariesControllers
+
+Router.route('/allitineraries')
+.get(obtenerItineraries)
+.post(cargarItinerario)
+
+
+Router.route('/allitineraries/:id')
+.delete(borrarItinerario)
+.put(modificarItinerario)
+.get(obtenerUnItinerario)
+
+
 module.exports = Router

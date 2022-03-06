@@ -6,6 +6,7 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import { useEffect,useState } from "react";
 import axios from "axios"
 
+
 function Cities() {
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -32,6 +33,7 @@ function filterCards (event) {
 
       <ButtonHome />
       <WelcomeCities/>
+     
 
       
       <div  className="divinput" >

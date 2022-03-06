@@ -30,23 +30,22 @@ export default function RecipeReviewCard() {
     setExpanded(!expanded);
   };
 
-  const {id} = useParams()
     
 
   const [data, setData] = useState()
- 
   useEffect(()=>{
-  axios.get(`http://localhost:4000/api/allcities`)
-  .then(respuesta=>setData(respuesta.data.response.ciudades.filter(cities => cities._id === id)))
-})
+    axios.get(`http://localhost:4000/api/allitineraries`)
+    .then(respuesta=>setData(respuesta.data.response.itineraries))
+  })
+  
 
 
   return (
       <div className='tineraries'>
-    {data?.map((evento)=> (     
+    {data?.length !== 0?(data?.map((evento)=> (     
     <Card   sx={{ maxWidth: "auto"} }>
       <div className="titletineraries">
-        <h1>{evento.tinerayone}</h1>
+        <h1>{evento.titletineray}</h1>
       </div>
       <div className="infotineraries">
         <div className="imageuser">
@@ -55,17 +54,24 @@ export default function RecipeReviewCard() {
         <div>
           <h2>{evento.username}</h2>
         </div>
-        <div>
-          <h2>{evento.duration} </h2>
+        <div className="price">
+        <div >
+          <h3>Duration: {evento.duration}  </h3>
         </div>
         <div>
-          <h2>{evento.price}</h2>
+          <h3>Price:{evento.price}  </h3>
+        </div>
+        </div>
+        <div className="likes">
+        <div>
+          <h3>Likes:</h3>
         </div>
         <div>
-          <h2>Likes</h2>
+          <img src={process.env.PUBLIC_URL+ `/imagenes/${evento.likes}`  } />
         </div>
         <div>
-          <h2>{evento.hashtagone}</h2>
+          <h3>{evento.hashtag}</h3>
+        </div>
         </div>
       </div>
       <CardActions disableSpacing   >
@@ -76,7 +82,7 @@ export default function RecipeReviewCard() {
           aria-label="show more"
 
         >
-              <button> {expanded ? "" : "Read More"}</button>
+              <button> {expanded ? "" : "View More"}</button>
         </ExpandMore>
       </CardActions>
       <Collapse  sx={{ maxWidth: 700}}  in={expanded} timeout="auto" unmountOnExit>
@@ -84,8 +90,8 @@ export default function RecipeReviewCard() {
         <div className="activitiescarrousell">
             <div>
         <h1>Activities</h1>
-       <h2> {evento.tinerayoneactivity}</h2>
-      <h3>{evento.locationone}</h3> 
+       <p> {evento.tinerayoneactivity}</p>
+      <p>{evento.locationone}</p> 
         </div>
       {/* <Swiper
         spaceBetween={5}
@@ -116,12 +122,12 @@ export default function RecipeReviewCard() {
             aria-expanded={expanded}
             aria-label="show more"
           >
-          <button>Show less</button>
+          <button>View less</button>
           </ExpandMore>
         </CardContent>
       </Collapse>
     </Card>
-    ))}
+    ))): <h1>No hay itinerarios para esta ciudad</h1>}
     </div>
   );
 }
