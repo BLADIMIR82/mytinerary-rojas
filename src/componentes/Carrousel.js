@@ -53,12 +53,12 @@ export default function Carrousel() {
           delay: 4000,
           disableOnInteraction: false
         }}
-        className="mySwiper"
+       
       >
         <div className="cards-carrousell">
         {cities.map(evento =>
             
-            <div className="cards-carrousell">
+            <div className="cards-carrousell" key={evento.name}>
             <SwiperSlide>
            <img className="imagenes" src={process.env.PUBLIC_URL+ `/imagenes/${evento.image}`} />
             <LinkRouter className="title-card" to={`detalle/${evento.id}`}>{evento.name}</LinkRouter>

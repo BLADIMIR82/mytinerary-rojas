@@ -63,7 +63,7 @@ const ResponsiveAppBar = () => {
               anchorEl={anchorElNav}
               anchorOrigin={{
                 vertical: 'bottom',
-                horizontal: 'rigth',
+                horizontal: 'right',
               }}
               keepMounted
               transformOrigin={{
@@ -76,8 +76,8 @@ const ResponsiveAppBar = () => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+              {pages.map((page, index) => (
+                <MenuItem key={index} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
@@ -91,11 +91,11 @@ const ResponsiveAppBar = () => {
           >
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
+            {pages.map((page, index) => (
               <Button className=' butt'
-                key={page}
+                key={index}
                 onClick={handleCloseNavMenu}
-                // sx={{ my: 2, color: 'black', display: 'block' }}
+               
               >
                 {page}
               </Button>

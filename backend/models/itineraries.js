@@ -9,6 +9,7 @@ const itinerariesSchema = new mongoose.Schema({
     itinerayactivity:{type:String, required:true}, 
     location:{type:String, required:true}, 
     hashtag:{type:String, required:true},
+    usuario: {type: mongoose.Types.ObjectId, ref:'ciudades', required: true},
          
       
 })

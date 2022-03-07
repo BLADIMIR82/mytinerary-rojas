@@ -36,13 +36,13 @@ export default function RecipeReviewCard() {
   useEffect(()=>{
     axios.get(`http://localhost:4000/api/allitineraries`)
     .then(respuesta=>setData(respuesta.data.response.itineraries))
-  })
+  },[])
   
 
 
   return (
       <div className='tineraries'>
-    {data?.length !== 0?(data?.map((evento)=> (     
+    {data?.map((evento)=> (     
     <Card   sx={{ maxWidth: "auto"} }>
       <div className="titletineraries">
         <h1>{evento.titletineray}</h1>
@@ -127,7 +127,7 @@ export default function RecipeReviewCard() {
         </CardContent>
       </Collapse>
     </Card>
-    ))): <h1>No hay itinerarios para esta ciudad</h1>}
+    ))}
     </div>
   );
 }

@@ -5,27 +5,31 @@ import ButtonHome from "../componentes/buttomhome"
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import { useEffect,useState } from "react";
 import axios from "axios"
+import {connect} from "react-redux"
+import citiesActions from "../redux/actions/citiesAction";
 
 
-function Cities() {
+function Cities(props) {
+  
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
-
+  
   const [input,setInput]=useState()
   const [apidata, setApiData ]= useState()
-
+  
   useEffect(()=>{
-
-  axios.get(`http://localhost:4000/api/allcities`)
-  .then(respuesta=>setApiData(respuesta.data.response.ciudades))
-},[]) 
-
-function filterCards (event) {
-
-  setInput(apidata.filter(city=> city.name.toLowerCase().startsWith(event.target.value.toLowerCase().trim())))
-
-}
+    props.fetchearCities()
+ 
+  
+  },[]) 
+  
+  function filterCards (event) {
+    
+    props.filtrarCities(props.cities, event.target.value)
+    
+  }
+  
 
   return (
      
@@ -41,7 +45,7 @@ function filterCards (event) {
       </div>
      
      
-      < Cards search={input} />
+      < Cards cities={props.filterCities} />
       
       
      </div>
@@ -49,5 +53,19 @@ function filterCards (event) {
    
   );
 }
+const mapDispatchToProps  ={
+  fetchearCities:citiesActions.fetchearCities,
+  filtrarCities:citiesActions. filtrarCities,
 
-export default Cities;
+}
+
+const mapStateToProps = (state) =>{
+  return{
+      cities:state.citiesReducer.cities,
+      auxiliar: state.citiesReducer.auxiliar,
+      filterCities:state.citiesReducer.filterCities
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Cities);
+
