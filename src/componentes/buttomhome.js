@@ -4,11 +4,11 @@ export default function ButtonHome() {
   return (
       <div className="buttomhome">
     <LinkRouter to= "cities">
-    <button class="learn-more">
-    <span class="circle" aria-hidden="true">
-    <span class="icon arrow"></span>
+    <button className="learn-more">
+    <span className="circle" aria-hidden="true">
+    <span className="icon arrow"></span>
     </span>
-    <span class="button-text">Home</span>
+    <span className="button-text">Home</span>
   </button>
    </LinkRouter>
    </div>

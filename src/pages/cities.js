@@ -4,7 +4,6 @@ import WelcomeCities from "../componentes/welcomecities";
 import ButtonHome from "../componentes/buttomhome"
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import { useEffect,useState } from "react";
-import axios from "axios"
 import {connect} from "react-redux"
 import citiesActions from "../redux/actions/citiesAction";
 
@@ -15,8 +14,6 @@ function Cities(props) {
     window.scrollTo(0, 0)
   }, [])
   
-  const [input,setInput]=useState()
-  const [apidata, setApiData ]= useState()
   
   useEffect(()=>{
     props.fetchearCities()

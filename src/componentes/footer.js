@@ -3,8 +3,6 @@ import {Link as LinkRouter} from "react-router-dom"
 import {
   MDBFooter,
   MDBContainer,
-  MDBIcon,
-  MDBInput,
   MDBCol,
   MDBRow,
   MDBRipple
@@ -18,7 +16,7 @@ export default function Footer() {
     >
       <MDBContainer className="p-4">
         <section className="">
-          <div class="pb-3 col-example">
+          <div className="pb-3 col-example">
             {" "}
             <a
               className="btn btn-outline-dark btn-floating m-1"
@@ -121,7 +119,7 @@ export default function Footer() {
                   src="https://mdbcdn.b-cdn.net/img/new/fluid/city/115.webp"
                   className="w-100"
                 />
-                </LinkRouter>
+                </LinkRouter>  
                 <a href="#!">
                   <div
                     className="mask"

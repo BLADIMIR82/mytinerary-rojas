@@ -4,7 +4,10 @@ import { useEffect,useState } from "react";
 import axios from "axios"
 // import Itiniraries from "./itineraries"
 import RecipeReviewCard from "./itinirariesdos"
-export default function CardsDetalle() {
+
+import {connect} from "react-redux";
+import citiesActions from "../redux/actions/citiesAction";
+function CardsDetalle(props) {
   
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -13,26 +16,34 @@ export default function CardsDetalle() {
     const {id} = useParams()
     
 
-    const [data, setData] = useState()
+    const [card, setCard] = useState({element:props.cities.find((i)=>i._id.toString()===id.toString())})
    
-    useEffect(()=>{
-    axios.get(`http://localhost:4000/api/allcities`)
-    .then(respuesta=>setData(respuesta.data.response.ciudades.filter(cities => cities._id === id)))
-  })
+
+  useEffect(()=>{
+    if (props.cities.lenght<1){
+      props.fetchearUnaCiudad(id)
+      .then ((traerId)=>setCard({element:traerId}))
+    }
+
+  },[])
+
+  if (!card.element){
+    return (<h1>waiting ...</h1>)
+  }
+
 
   return (
     
     <div className= "cardsDetalle">
-    {data?.map(evento=>
-
+   
 <div class="cards">
 <div class="card">
-  <h2 class="card-title">{evento.name}</h2>
-  <img src={process.env.PUBLIC_URL+ `/imagenes/${evento.image}`} />
-  <p class="card-desc">{evento.info}</p>
+  <h2 class="card-title">{card.element.name}</h2>
+  <img src={process.env.PUBLIC_URL+ `/imagenes/${card.element.image}`} />
+  <p class="card-desc">{card.element.info}</p>
 </div>
 </div>
-    )}
+    
     <div>
 {/* <Itiniraries /> */}
 <RecipeReviewCard />
@@ -42,6 +53,21 @@ export default function CardsDetalle() {
     </div>
   )
 }
+const mapDispatchToProps  ={
+  fetchearCities:citiesActions.fetchearCities,
+  filtrarCities:citiesActions. filtrarCities,
+
+}
+
+const mapStateToProps = (state) =>{
+  return{
+      cities:state.citiesReducer.cities,
+      auxiliar: state.citiesReducer.auxiliar,
+      filterCities:state.citiesReducer.filterCities
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CardsDetalle)
 
 
  

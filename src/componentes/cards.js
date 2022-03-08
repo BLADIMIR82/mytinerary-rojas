@@ -1,17 +1,9 @@
 import * as React from 'react';
 import {Link as LinkRouter} from "react-router-dom"
 import { useEffect,useState } from "react";
-import axios from "axios"
 import Loader from "../componentes/loader"
 
 export default function Cards(props) {
-
-  const [data, setData] = useState()
-   
-  
-
-  
-
 
 
   return (

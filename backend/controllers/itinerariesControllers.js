@@ -49,7 +49,8 @@ const itinerariesControllers = {
                     itinerary: itinerary,
                     itinerayactivity: itinerayactivity,
                     location: location,
-                    hashtag: hashtag }).save()
+                    hashtag: hashtag,
+                     usuario:usuario }).save()
                     .then((respuesta) => res.json({respuesta}))    
     },
  
