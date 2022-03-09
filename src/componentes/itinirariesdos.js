@@ -8,9 +8,10 @@ import IconButton from "@mui/material/IconButton";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper";
 import {useParams} from 'react-router-dom'
-import { useEffect,useState } from "react";
+import { useEffect } from "react";
 import axios from "axios"
-
+import  itinerariesActions from "../redux/actions/itinerariesAction"
+import {connect} from "react-redux"
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -23,29 +24,30 @@ const ExpandMore = styled((props) => {
 }));
 
 
-export default function RecipeReviewCard() {
+function RecipeReviewCard(props) {
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-
+console.log(props)
     
 
-  const [data, setData] = useState()
+  // const [data, setData] = useState()
   useEffect(()=>{
-    axios.get(`http://localhost:4000/api/allitineraries`)
-    .then(respuesta=>setData(respuesta.data.response.itineraries))
+    props.fetchearUnaItinerary(props.id)
+    // axios.get(`http://localhost:4000/api/allitineraries`)
+    // .then(respuesta=>setData(respuesta.data.response.itineraries))
   },[])
   
 
 
   return (
       <div className='tineraries'>
-    {data?.map((evento)=> (     
+    {props.itinerariesByCity?.map((evento)=> (     
     <Card   sx={{ maxWidth: "auto"} }>
-      <div className="titletineraries">
-        <h1>{evento.titletineray}</h1>
+      <div className="titletineraries"> 
+        <h1>{evento.titleitinerary}</h1>
       </div>
       <div className="infotineraries">
         <div className="imageuser">
@@ -59,7 +61,7 @@ export default function RecipeReviewCard() {
           <h3>Duration: {evento.duration}  </h3>
         </div>
         <div>
-          <h3>Price:{evento.price}  </h3>
+          <h3>Price:{"💰".repeat(parseInt(evento.price))}  </h3>
         </div>
         </div>
         <div className="likes">
@@ -88,9 +90,9 @@ export default function RecipeReviewCard() {
       <Collapse  sx={{ maxWidth: 700}}  in={expanded} timeout="auto" unmountOnExit>
         <CardContent  >
         <div className="activitiescarrousell">
-            <div>
+            <div> 
         <h1>Activities</h1>
-       <p> {evento.tinerayoneactivity}</p>
+       <p> {evento.tineraryoneactivity}</p>
       <p>{evento.locationone}</p> 
         </div>
       {/* <Swiper
@@ -131,3 +133,19 @@ export default function RecipeReviewCard() {
     </div>
   );
 }
+const mapDispatchToProps  ={
+  
+  fetchearUnaItinerary:itinerariesActions.fetchearUnaItinerary,
+
+
+}
+
+const mapStateToProps = (state) =>{
+  return{
+           
+      itineraries:state.itinerariesReducer.itineraries,
+      itinerariesByCity:state.itinerariesReducer.itinerariesByCity
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(RecipeReviewCard)

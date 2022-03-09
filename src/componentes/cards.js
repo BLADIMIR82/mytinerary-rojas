@@ -4,7 +4,7 @@ import { useEffect,useState } from "react";
 import Loader from "../componentes/loader"
 
 export default function Cards(props) {
-
+console.log(props.cities)
 
   return (
     
@@ -12,6 +12,7 @@ export default function Cards(props) {
           <div className='titlecities'>
           <p>Cities</p>
           </div>
+          
     {props.cities?.length !== 0?( props.cities?.map(evento=>
         <div className='cardsdinamics1' key={evento._id} >
       

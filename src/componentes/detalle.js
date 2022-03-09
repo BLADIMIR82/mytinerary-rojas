@@ -7,6 +7,8 @@ import RecipeReviewCard from "./itinirariesdos"
 
 import {connect} from "react-redux";
 import citiesActions from "../redux/actions/citiesAction";
+import itinerariesActions from '../redux/actions/itinerariesAction';
+
 function CardsDetalle(props) {
   
   useEffect(() => {
@@ -27,11 +29,9 @@ function CardsDetalle(props) {
 
   },[])
 
-  if (!card.element){
-    return (<h1>waiting ...</h1>)
-  }
+ 
 
-
+   
   return (
     
     <div className= "cardsDetalle">
@@ -46,7 +46,7 @@ function CardsDetalle(props) {
     
     <div>
 {/* <Itiniraries /> */}
-<RecipeReviewCard />
+<RecipeReviewCard id={id}/>
      
     </div>
 
@@ -55,6 +55,7 @@ function CardsDetalle(props) {
 }
 const mapDispatchToProps  ={
   fetchearCities:citiesActions.fetchearCities,
+  fetchearItinerary:itinerariesActions.fetchearItinerary,
   filtrarCities:citiesActions. filtrarCities,
 
 }
@@ -63,7 +64,8 @@ const mapStateToProps = (state) =>{
   return{
       cities:state.citiesReducer.cities,
       auxiliar: state.citiesReducer.auxiliar,
-      filterCities:state.citiesReducer.filterCities
+      filterCities:state.citiesReducer.filterCities,
+      itineraries:state.itinerariesReducer.itineraries
   }
 }
 

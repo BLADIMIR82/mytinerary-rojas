@@ -1,4 +1,3 @@
-
 import Cards from "../componentes/cards"
 import WelcomeCities from "../componentes/welcomecities";
 import ButtonHome from "../componentes/buttomhome"

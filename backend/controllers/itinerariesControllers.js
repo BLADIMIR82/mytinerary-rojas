@@ -14,25 +14,25 @@ const itinerariesControllers = {
             response : error ? 'ERROR' : {itineraries},
             success: error ? false : true,
             error:error
-        })
+        }) 
     },
 
    obtenerUnItinerario: async (req, res)=>{
         const id =req.params.id
-        console.log(req.params)
-        
+        console.log(req.params) 
+        console.log(id)
         let itinerary
         let error = null
 
         try{
-            itinerary = await Itineraries.find({usuario:id})
-           
+            itinerary = await Itineraries.find({ciudad:id})
+           console.log(itinerary)
         }catch(err){
             error = err
             console.log(error)
         }
         res.json({
-            response: error ? 'ERROR' : itinerary, 
+            response: error ? 'ERROR' : {itinerary}, 
             success: error ? false : true,
             error: error
         })
@@ -41,19 +41,24 @@ const itinerariesControllers = {
 
 
     cargarItinerario: async(req,res)=>{
-        const { username,userimage, price, duration, itinerary, itinerayactivity,  location, hashtag  } = req.body.dataInput
-        new Itineraries({ userimage:userimage,
-                    username: username,
-                    price: price,
-                    duration:duration,
+        const { titleitinerary, userimage, username, price,  likes, duration, itinerary, itineraryactivity,  location, hashtag, ciudad } = req.body.dataInput
+        new Itineraries({ 
+                    titleitinerary:titleitinerary,
+                    userimage:userimage,
+                    username:username,         
+                    price: price,       
+                    duration:duration,      
+                    likes:likes,    
                     itinerary: itinerary,
-                    itinerayactivity: itinerayactivity,
+                    itineraryactivity: itineraryactivity, 
                     location: location,
-                    hashtag: hashtag,
-                     usuario:usuario }).save()
-                    .then((respuesta) => res.json({respuesta}))    
+                    hashtag: hashtag, 
+                    ciudad:ciudad                     
+                         }).save()              
+
+                    .then((respuesta) => res.json({respuesta}))        
     },
- 
+     
 
 
     borrarItinerario: async (req,res)=>{ 
@@ -68,13 +73,13 @@ const itinerariesControllers = {
 
     modificarItinerario: async (req, res)=>{
         const id = req.params.id
-        const itinerarie = req.body.dataInput
+        const Itineraries = req.body.dataInput
 
-        let itinerariedb = await Itineraries.findOneAndUpdate({_id:id}, itinerarie) 
+        let itinerariedb = await Itineraries.findOneAndUpdate({_id:id}, itineraries) 
         .then((respuesta) => res.json({respuesta}))
     }
-
-};
+   
+};   
 
 module.exports = itinerariesControllers 
 

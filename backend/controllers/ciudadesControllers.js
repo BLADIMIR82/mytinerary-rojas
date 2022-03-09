@@ -42,13 +42,14 @@ obtenerUnaCiudad: async (req, res)=>{
 },
 cargarCiudad: async(req,res)=>{
     console.log(req.body)
-    const { name, info, image} = req.body.dataInput
+    const { name, info, image, country} = req.body.dataInput
     new Ciudades({ image:image,
                  name:name,
+                 country:country,
                  info:info}).save()
         .then((respuesta) => res.json({respuesta}))
 },
-borrarCiudad: async (req,res)=>{
+borrarCiudad: async (req,res)=>{ 
     const id = req.params.id
        await Ciudades.findOneAndDelete({_id:id})
        .then((respuesta) => res.json({respuesta}))

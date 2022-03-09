@@ -1,3 +1,4 @@
+import cities from "../../pages/cities"
 
 const initialState = {
     cities:[],
@@ -6,7 +7,7 @@ const initialState = {
 }
 
 const citiesReducer = (state = initialState, action)=>{
-
+console.log(state)
     switch(action.type){
         case 'fetch':
             
@@ -15,6 +16,7 @@ const citiesReducer = (state = initialState, action)=>{
                 cities: action.payload,
                 auxiliar: action.payload,
                 filterCities: action.payload
+                
             }
             
         case 'delete':
