@@ -11,10 +11,17 @@ const citiesActions = {
     
     fetchearUnaCiudad: (id) =>{
         return async (dispatch, getState) => {
-            const res = await axios.get("http://localhost:4000/api/allcities/"+id)
-            return (res.data.response)
+            try {
+
+                const respuesta = await axios.get("http://localhost:4000/api/allcities/"+id)
+                console.log(respuesta)
+                return(respuesta.data.response)
+
+            }catch(err){
+                console.log(err)
+            }
         }
-    },
+    },   
     borrarCities: (id)=>{
         return async(dispatch, getState) => {
             try {
@@ -49,3 +56,4 @@ const citiesActions = {
 }
 
 export default citiesActions;
+     

@@ -21,13 +21,27 @@ function CardsDetalle(props) {
     const [card, setCard] = useState({element:props.cities.find((i)=>i._id.toString()===id.toString())})
    
 
+  // useEffect(()=>{
+  //   if (props.cities.lenght<1){
+  //     props.fetchearUnaCiudad(id)
+  //     .then ((traerId)=>setCard({element:traerId}))
+  //   }
+
+  // },[])
   useEffect(()=>{
-    if (props.cities.lenght<1){
+
+
+    if (props.cities.length < 1){
+
       props.fetchearUnaCiudad(id)
-      .then ((traerId)=>setCard({element:traerId}))
+      .then((traerId)=>setCard({element:traerId}))
     }
 
   },[])
+
+  if (!card.element){
+    return (<h1>Loading..</h1>)
+  }
 
  
 
@@ -57,6 +71,7 @@ const mapDispatchToProps  ={
   fetchearCities:citiesActions.fetchearCities,
   fetchearItinerary:itinerariesActions.fetchearItinerary,
   filtrarCities:citiesActions. filtrarCities,
+  fetchearUnaCiudad: citiesActions.fetchearUnaCiudad
 
 }
 

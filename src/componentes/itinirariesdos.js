@@ -5,13 +5,12 @@ import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination, Navigation } from "swiper";
 import {useParams} from 'react-router-dom'
 import { useEffect } from "react";
 import axios from "axios"
 import  itinerariesActions from "../redux/actions/itinerariesAction"
 import {connect} from "react-redux"
+import  NoItineraries from "./noitineraries"
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -30,23 +29,22 @@ function RecipeReviewCard(props) {
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-console.log(props)
+console.log(props.fetchearUnaItinerary)
     
 
-  // const [data, setData] = useState()
+  
   useEffect(()=>{
     props.fetchearUnaItinerary(props.id)
-    // axios.get(`http://localhost:4000/api/allitineraries`)
-    // .then(respuesta=>setData(respuesta.data.response.itineraries))
+    
   },[])
   
 
 
   return (
       <div className='tineraries'>
-    {props.itinerariesByCity?.map((evento)=> (     
+    {props.itinerariesByCity?.length !== 0?(props.itinerariesByCity?.map((evento)=> (     
     <Card   sx={{ maxWidth: "auto"} }>
-      <div className="titletineraries"> 
+      <div className="titletineraries" key={evento._id}> 
         <h1>{evento.titleitinerary}</h1>
       </div>
       <div className="infotineraries">
@@ -58,10 +56,10 @@ console.log(props)
         </div>
         <div className="price">
         <div >
-          <h3>Duration: {evento.duration}  </h3>
+          <h3>Duration: 🕐 {evento.duration}  </h3>
         </div>
         <div>
-          <h3>Price:{"💵".repeat(parseInt(evento.price))}  </h3>
+          <h3>Price:{"💶".repeat(parseInt(evento.price))}  </h3>
         </div>
         </div>
         <div className="likes">
@@ -95,25 +93,6 @@ console.log(props)
        <p> {evento.tineraryoneactivity}</p>
       <p>{evento.locationone}</p> 
         </div>
-      {/* <Swiper
-        spaceBetween={5}
-        centeredSlides={true}
-        autoplay={{
-          delay: 3000,
-          disableOnInteraction: false,
-        }}
-        pagination={{
-          clickable: true,
-        }}
-        navigation={true}
-        modules={[Autoplay, Pagination, Navigation]}
-        className="mySwiper"
-        
-      >
-        <SwiperSlide>Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
-        <SwiperSlide>Slide 3</SwiperSlide>
-      </Swiper> */}
       </div>
       <div className='comments'> 
      <h1>Comments</h1>
@@ -129,7 +108,7 @@ console.log(props)
         </CardContent>
       </Collapse>
     </Card>
-    ))}
+    ))):<NoItineraries />}
     </div>
   );
 }
