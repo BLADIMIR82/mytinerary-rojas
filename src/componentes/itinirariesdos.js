@@ -61,7 +61,7 @@ console.log(props)
           <h3>Duration: {evento.duration}  </h3>
         </div>
         <div>
-          <h3>Price:{"💰".repeat(parseInt(evento.price))}  </h3>
+          <h3>Price:{"💵".repeat(parseInt(evento.price))}  </h3>
         </div>
         </div>
         <div className="likes">
