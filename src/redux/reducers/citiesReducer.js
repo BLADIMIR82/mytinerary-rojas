@@ -49,3 +49,11 @@ const citiesReducer = (state = initialState, action)=>{
 
 }
 export default citiesReducer
+
+
+// Los reducers especifican cómo
+// cambia el estado de la aplicación en respuesta a las acciones enviadas al store. Recuerda que
+// las acciones solo describen el hecho de que sucedió algo, pero no describen de qué manera
+// cambia el estado de la aplicación. Estos reciben dos parámetros: la acción y el estado que
+// tenía anteriormente. Con ellos, se podrá modificar el estado y lo devolverá con la nueva
+// situación.
