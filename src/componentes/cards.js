@@ -4,7 +4,7 @@ import { useEffect,useState } from "react";
 import Loader from "../componentes/loader"
 
 export default function Cards(props) {
-console.log(props.cities)
+
 
   return (
     

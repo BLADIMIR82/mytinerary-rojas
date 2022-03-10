@@ -14,7 +14,7 @@ const citiesActions = {
             try {
 
                 const respuesta = await axios.get("http://localhost:4000/api/allcities/"+id)
-                console.log(respuesta)
+             
                 return(respuesta.data.response)
 
             }catch(err){

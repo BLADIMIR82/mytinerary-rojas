@@ -13,7 +13,7 @@ const itinerariesActions = {
     fetchearUnaItinerary: (id) =>{
         return async (dispatch, getState) => {
             const res = await axios.get("http://localhost:4000/api/allitineraries/"+id)
-            console.log(res)
+         
             dispatch({type:'fetchearUnaItinerary', payload:res.data.response.itinerary})
           
         }

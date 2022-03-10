@@ -29,7 +29,8 @@ function RecipeReviewCard(props) {
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-console.log(props.fetchearUnaItinerary)
+  
+
     
 
   
@@ -56,7 +57,7 @@ console.log(props.fetchearUnaItinerary)
         </div>
         <div className="price">
         <div >
-          <h3>Duration: 🕐 {evento.duration}  </h3>
+          <h3>Duration: ⏳ {evento.duration}  </h3>
         </div>
         <div>
           <h3>Price:{"💶".repeat(parseInt(evento.price))}  </h3>
@@ -79,7 +80,7 @@ console.log(props.fetchearUnaItinerary)
           expand={expanded}
           onClick={handleExpandClick}
           aria-expanded={expanded}
-          aria-label="show more"
+          aria-label="view More"
 
         >
               <button> {expanded ? "" : "View More"}</button>
@@ -101,7 +102,7 @@ console.log(props.fetchearUnaItinerary)
             expand={expanded}
             onClick={handleExpandClick}
             aria-expanded={expanded}
-            aria-label="show more"
+            aria-label="View less"
           >
           <button>View less</button>
           </ExpandMore>
