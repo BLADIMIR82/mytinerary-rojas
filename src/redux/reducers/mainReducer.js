@@ -1,15 +1,15 @@
 import { combineReducers } from 'redux'
-
 import citiesReducer from './citiesReducer'
-import authReducer from './authReducer'
 import itinerariesReducer from './itinerariesReducer'
 
 const mainReducer = combineReducers({
 
     itinerariesReducer,
     citiesReducer,
-    authReducer
+
 
 })
 
 export default mainReducer
+// mainReducer nos permite centralizar todos nuestros reducer en un solo sitio, para mantener
+// nuestro código ordenado

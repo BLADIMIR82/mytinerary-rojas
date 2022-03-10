@@ -7,11 +7,13 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import mainReducer from './redux/reducers/mainReducer';
 import { createStore, applyMiddleware } from 'redux';
-const reduxStore = createStore(mainReducer,applyMiddleware(thunk))
+const reduxStore = createStore(mainReducer,applyMiddleware(thunk))   
+// nos permitirá realizar de despachos de funciones ademas de estados, lo cual
+// incrementan las funcionalidades de redux
 
 ReactDOM.render(
   <React.StrictMode>
-  <Provider store={reduxStore}>
+  <Provider store={reduxStore}>      
         <App />
     </Provider>
   </React.StrictMode>,

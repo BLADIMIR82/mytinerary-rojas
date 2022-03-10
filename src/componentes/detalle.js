@@ -1,8 +1,7 @@
 import * as React from 'react';
 import {useParams} from 'react-router-dom'
 import { useEffect,useState } from "react";
-import axios from "axios"
-// import Itiniraries from "./itineraries"
+
 import RecipeReviewCard from "./itinirariesdos"
 
 import {connect} from "react-redux";
@@ -21,13 +20,7 @@ function CardsDetalle(props) {
     const [card, setCard] = useState({element:props.cities.find((i)=>i._id.toString()===id.toString())})
    
 
-  // useEffect(()=>{
-  //   if (props.cities.lenght<1){
-  //     props.fetchearUnaCiudad(id)
-  //     .then ((traerId)=>setCard({element:traerId}))
-  //   }
-
-  // },[])
+  
   useEffect(()=>{
 
 

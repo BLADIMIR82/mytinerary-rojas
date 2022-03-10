@@ -7,7 +7,6 @@ import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
 import {useParams} from 'react-router-dom'
 import { useEffect } from "react";
-import axios from "axios"
 import  itinerariesActions from "../redux/actions/itinerariesAction"
 import {connect} from "react-redux"
 import  NoItineraries from "./noitineraries"

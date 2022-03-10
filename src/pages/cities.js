@@ -1,7 +1,6 @@
 import Cards from "../componentes/cards"
 import WelcomeCities from "../componentes/welcomecities";
 import ButtonHome from "../componentes/buttomhome"
-import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import { useEffect,useState } from "react";
 import {connect} from "react-redux"
 import citiesActions from "../redux/actions/citiesAction";
