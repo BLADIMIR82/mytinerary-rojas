@@ -19,7 +19,9 @@ const pages = [
 <LinkRouter className='buttomlink1'to="home">Home</LinkRouter>,  
 <LinkRouter className='buttomlink1' to="cities">Cities</LinkRouter>
 ];
-const settings = ['Login',  'Sing Up'];
+const settings = [
+<LinkRouter className=''to="login">Login</LinkRouter>,  
+ <LinkRouter className=''to="singup">Sing Up</LinkRouter>];
 
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);

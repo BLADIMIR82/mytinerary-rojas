@@ -33,7 +33,7 @@ function CardsDetalle(props) {
   },[])
 
   if (!card.element){
-    return (<h1>Loading..</h1>)
+    return (props.cities)
   }
 
  
