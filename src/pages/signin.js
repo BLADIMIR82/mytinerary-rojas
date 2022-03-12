@@ -1,5 +1,5 @@
 
-
+import {Link as LinkRouter} from "react-router-dom"
 
 export default function SignIn() {
   return (
@@ -7,11 +7,11 @@ export default function SignIn() {
     <div class="container">
 	<div>
       <h1>Wellcome!! your MyTinerary</h1>
-		<h2>Don't have an account? SingUp</h2>
+		<h2>Don't have an account? <LinkRouter to={"/signup"}>SingUp</LinkRouter> </h2>
       </div>
 	<div class="screen">
 		<div class="screen__content">
-			<form class="login">
+			<form class="login1">
 				<div class="login__field">
 					<i class="login__icon fas fa-user"></i>
 					<input type="text" class="login__input" placeholder="Please, enter your Email"/>

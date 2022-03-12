@@ -1,4 +1,3 @@
-import cities from "../../pages/cities"
 
 const initialState = {
     cities:[],

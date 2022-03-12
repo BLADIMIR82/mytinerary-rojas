@@ -11,11 +11,8 @@ Router.route('/allcities/:id')
 .delete(borrarCiudad)
 .put(modificarCiudad)
 .get(obtenerUnaCiudad)
-  
-  
 
-/////////////////////////////////////////////****///////////////////////////////
-
+ /////////////////////////////////////////////controllers of itireries///////////////////////////////
 
 const itinerariesControllers = require('../controllers/itinerariesControllers')
 const {obtenerItineraries, obtenerUnItinerario, cargarItinerario, borrarItinerario, modificarItinerario} = itinerariesControllers
@@ -30,5 +27,19 @@ Router.route('/allitineraries/:id')
 .put(modificarItinerario)
 .get(obtenerUnItinerario)
 
+/////////////////////////////////////////////controllers of users///////////////////////////////
+
+const usersControllers = require('../controllers/userControllers');
+const {signUpUsers, signInUser, signOutUser}= usersControllers
+
+Router.route('/auth/signUp')
+.post(signUpUsers)
+
+Router.route('/auth/signIn')
+.post(signInUser)
+
+Router.route('/auth/signOut')
+.post(signOutUser)
+ 
 
 module.exports = Router

@@ -1,15 +1,42 @@
-export default function SignUp() {
+import { connect } from 'react-redux';
+import userActions from '.././redux/actions/userActions';
+import {Link as LinkRouter } from 'react-router-dom';
+
+
+ function SignUp(props) {
+  console.log(props)
+  
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    const userData={
+      firstName:event.target[0].value,
+      lastName:event.target[1].value,
+      email:event.target[2].value,
+      password:event.target[3].value,
+      photoURL:event.target[4].value,
+      chooseCountry:event.target[5].value,
+      from:"form-Signup"
+  }
+  props.signUpUser(userData)
+  
+  
+  handleSubmit.reset()
+  }
+  console.log(props.message)
+  // alert(props.message.message)
+
+  
   return (
     <div className="formsingup">
       
       <div class="container">
       <div>
       <h1>Create your MyTinerary account !!</h1>
-      <h2>Already have an account? Log in.</h2>
+      <h2>Already have an account? <LinkRouter to={"/signin"}>Log In</LinkRouter>.</h2>
       </div>
         <div class="screen">
           <div class="screen__content">
-            <form class="login">
+            <form class="login"   onSubmit={handleSubmit}>
               <div class="login__field">
                 <i class="login__icon fas fa-user"></i>
                 <input
@@ -51,14 +78,14 @@ export default function SignUp() {
                 />
               </div>
               <select class="login__input">
-                <option value="Option 1">Option 1</option>
+                <option value="Option 1">Select City</option>
                 <option value="Option 2">Option 2</option>
                 <option value="Option 3">Option 3</option>
                 <option value="Option 4">Option 4</option>
                 <option value="Option 5">Option 5</option>
               </select>
               <button class="button login__submit">
-                <span class="button__text">Sing Up</span>
+                <span class="button__text"> Sing Up</span>
                 <i class="button__icon fas fa-chevron-right"></i>
               </button>
             </form>
@@ -75,3 +102,17 @@ export default function SignUp() {
     </div>
   );
 }
+
+const mapDispatchToProps = {
+    signUpUser: userActions.signUpUser,
+    
+}
+const mapStateToProps = (state) => {
+	return {
+		message: state.userReducer.message,
+	}
+}
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
