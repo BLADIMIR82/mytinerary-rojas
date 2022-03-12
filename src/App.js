@@ -6,8 +6,8 @@ import Home from "./pages/home"
 import CardsDetalle from "./componentes/detalle"
 import Cities from "./pages/cities"
 import PruebaApi from "./componentes/Frommyapi"
-import Login from "./pages/login";
-import SingUp from "./pages/singup";
+import SignIn from "./pages/signin";
+import SignUp from "./pages/signup";
 import {BrowserRouter,Routes,Route} from "react-router-dom";
 
 
@@ -24,8 +24,8 @@ function App() {
       <Route path="/cities" element ={<Cities />} />
       <Route path="detalle/:id" element ={<CardsDetalle />} />
       <Route path="pruebaApi/" element = {<PruebaApi />}/>
-      <Route path="/login" element= {<Login />}/>
-      <Route path="/singup" element= {<SingUp />}/>
+      <Route path="/signin" element= {<SignIn />}/>
+      <Route path="/signup" element= {<SignUp />}/>
       </Routes>
       <Footer />
    

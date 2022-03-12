@@ -1,19 +1,17 @@
 
 
 
-export default function Login() {
+export default function SignIn() {
   return (
     <div className="formlogin">
     <div class="container">
 	<div>
       <h1>Wellcome!! your MyTinerary</h1>
+		<h2>Don't have an account? SingUp</h2>
       </div>
 	<div class="screen">
 		<div class="screen__content">
 			<form class="login">
-        <div>
-            <h3>Welcome!!</h3>
-        </div>
 				<div class="login__field">
 					<i class="login__icon fas fa-user"></i>
 					<input type="text" class="login__input" placeholder="Please, enter your Email"/>
@@ -27,12 +25,9 @@ export default function Login() {
 					<i class="button__icon fas fa-chevron-right"></i>
 				</button>	
                 <button class="button login__submit">
-					<span class="button__text"> Sing up with Google</span>
+					<span class="button__text"> 📧Sing up with Google</span>
 					<i class="button__icon fas fa-chevron-right"></i>
 				</button>					
-			<div>
-				<h3>Don't have an account? SingUp</h3>
-			</div>
 			</form>
 		</div>
 		<div class="screen__background">

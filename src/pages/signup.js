@@ -1,10 +1,11 @@
-export default function SingUp() {
+export default function SignUp() {
   return (
     <div className="formsingup">
       
       <div class="container">
       <div>
       <h1>Create your MyTinerary account !!</h1>
+      <h2>Already have an account? Log in.</h2>
       </div>
         <div class="screen">
           <div class="screen__content">
@@ -61,9 +62,7 @@ export default function SingUp() {
                 <i class="button__icon fas fa-chevron-right"></i>
               </button>
             </form>
-            <div>
-              <h3>Don't have an account? SingUp</h3>
-            </div>
+           
           </div>
           <div class="screen__background">
             <span class="screen__background__shape screen__background__shape4"></span>
