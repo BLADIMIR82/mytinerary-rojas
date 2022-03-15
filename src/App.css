@@ -97,7 +97,7 @@ background-color: rgb(37, 36, 36);
   cursor:pointer;
 }
 .hero{
-  height: 110vh;
+  height: 100vh;
   background-size:cover;
   background-position:center;
   border-bottom: 0.05rem solid white;
@@ -115,7 +115,7 @@ background-color: rgb(37, 36, 36);
  padding: 10rem 4rem;
 }
 .call{
-  height: 110vh;
+  height: 100vh;
   background-size:cover;
   background-position: center;
 }
@@ -568,7 +568,7 @@ button {
   color: black;
 }
 .buttomlink1:hover{
-  color: white;
+  color: rgb(243, 2, 2);
   font-size: 1rem;
 }
 .buttomlink2{
@@ -711,9 +711,10 @@ width: 100%;
 .login {
   padding: 1rem;
   border-radius: 2rem;
+  
 }
 .login1{
-padding: 3rem 1.5rem;
+padding: 5rem 2rem;
 
 }
 
@@ -911,6 +912,21 @@ h3 {
 .titletineraries{
   justify-content: flex-end;
 }
+
+  .screen__background{
+    height: 90vh;
+    width: 80vw;
+
+  }
+  .screen{
+    height: 90vh;
+    width: 80vw;
+  }
+  .container{
+    display: flex;
+    flex-direction: column;
+  }
+  
 
   
 }

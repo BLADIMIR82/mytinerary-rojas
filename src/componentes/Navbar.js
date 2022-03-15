@@ -14,16 +14,20 @@ import MenuItem from '@mui/material/MenuItem';
 import logo from "../imagenes/logo3.png"
 import icon from "../imagenes/iconlogin.png"
 import {Link as LinkRouter} from "react-router-dom"
+import { connect } from 'react-redux';
+import userActions from "../redux/actions/userActions"
+
 
 const pages = [
 <LinkRouter className='buttomlink1'to="home">Home</LinkRouter>,  
 <LinkRouter className='buttomlink1' to="cities">Cities</LinkRouter>
 ];
 const settings = [
-<LinkRouter className='buttomlink1'to="signin">Sign In</LinkRouter>,  
- <LinkRouter className='buttomlink1'to="signup">Sign Up</LinkRouter>];
+<LinkRouter className='buttomlink1'to="signin">SignIn</LinkRouter>,  
+ <LinkRouter className='buttomlink1'to="signup">SignUp</LinkRouter>
+];
 
-const ResponsiveAppBar = () => {
+const ResponsiveAppBar = (props) => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -41,6 +45,14 @@ const ResponsiveAppBar = () => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+  function SignOut() {
+		props.SignOutUser(props.user.email)
+	}
+  function SignOut(){
+    console.log(props.user.email)
+    props.signOutUser(props.user.email)
+
+  }
 
   return (
     <AppBar position="fixed" className='navBar'>
@@ -106,9 +118,20 @@ const ResponsiveAppBar = () => {
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src={icon}/>
-              </IconButton>
+            {
+                  props.user ? (
+                    <div>
+
+                      <IconButton className="usuario-btn" onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                        <Avatar className="usuario-btn" src={props.user.photoURL} alt="usuario" />
+                      </IconButton>
+                    </div>
+                  ) : (
+                    <IconButton className="usuario-btn" onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                      <Avatar className="usuario-btn" src={icon} alt="usuario" />
+                    </IconButton>
+                  )
+                } 
             </Tooltip>
             <Menu
               sx={{ mt: '45px' }}
@@ -126,11 +149,24 @@ const ResponsiveAppBar = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
+              {props.user ? (
+                  <MenuItem onClick={handleCloseUserMenu}>
+                    <Typography textAlign="center"><LinkRouter className='buttomlink1' onClick={SignOut}to={"#"}>Sign Out</LinkRouter></Typography>
+                  </MenuItem>
+                 ) : (
+
+                    <div>
+                      <MenuItem  onClick={handleCloseUserMenu}>
+                      <Typography  textAlign="center"><LinkRouter className='buttomlink1' to={"/signup"}>Sign Up</LinkRouter></Typography>
+                      </MenuItem>
+
+                      <MenuItem  onClick={handleCloseUserMenu}>
+                      <Typography textAlign="center"><LinkRouter className='buttomlink1' to={"/signin"}>Sign In</LinkRouter></Typography>
+                      </MenuItem>
+                    </div>
+                  )
+                }
+
             </Menu>
           </Box>
         </Toolbar>
@@ -138,4 +174,16 @@ const ResponsiveAppBar = () => {
     </AppBar>
   );
 };
-export default ResponsiveAppBar;
+const mapStateToProps = (state) => {
+  return {
+    user: state.userReducer.user
+  }
+}
+
+const mapDispatchToProps = {
+  signOutUser: userActions.signOutUser
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ResponsiveAppBar);
+
+
