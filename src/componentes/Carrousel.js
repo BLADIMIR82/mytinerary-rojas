@@ -61,7 +61,7 @@ export default function Carrousel() {
             <div className="cards-carrousell" key={evento.name}>
             <SwiperSlide>
            <img className="imagenes" src={process.env.PUBLIC_URL+ `/imagenes/${evento.image}`} />
-            <LinkRouter className="title-card" to={`detalle/${evento.id}`}>{evento.name}</LinkRouter>
+            <LinkRouter className="title-card" to={`/`}>{evento.name}</LinkRouter>
             </SwiperSlide>
             </div>
           )}

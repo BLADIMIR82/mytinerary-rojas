@@ -1,9 +1,7 @@
 import * as React from 'react';
 import {useParams} from 'react-router-dom'
 import { useEffect,useState } from "react";
-
 import RecipeReviewCard from "./itinirariesdos"
-
 import {connect} from "react-redux";
 import citiesActions from "../redux/actions/citiesAction";
 import itinerariesActions from '../redux/actions/itinerariesAction';
@@ -15,15 +13,9 @@ function CardsDetalle(props) {
   }, [])
 
     const {id} = useParams()
-    
-
     const [card, setCard] = useState({element:props.cities.find((i)=>i._id.toString()===id.toString())})
-   
-
   
   useEffect(()=>{
-
-
     if (props.cities.length < 1){
 
       props.fetchearUnaCiudad(id)
@@ -52,10 +44,11 @@ function CardsDetalle(props) {
 </div>
     
     <div>
-{/* <Itiniraries /> */}
+
 <RecipeReviewCard id={id}/>
      
     </div>
+  <div></div>
 
     </div>
   )

@@ -5,7 +5,6 @@ import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
-import {useParams} from 'react-router-dom'
 import { useEffect } from "react";
 import  itinerariesActions from "../redux/actions/itinerariesAction"
 import {connect} from "react-redux"

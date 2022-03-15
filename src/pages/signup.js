@@ -1,11 +1,14 @@
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux';
 import userActions from '.././redux/actions/userActions';
 import {Link as LinkRouter } from 'react-router-dom';
-
+import Alert from '../componentes/Snackbar';
+import  apiCities from "../componentes/apicities"
 
  function SignUp(props) {
   console.log(props)
-  
+  let form = document.getElementById("formIn")
+
   const handleSubmit = (event) => {
     event.preventDefault()
     const userData={
@@ -15,28 +18,27 @@ import {Link as LinkRouter } from 'react-router-dom';
       password:event.target[3].value,
       photoURL:event.target[4].value,
       chooseCountry:event.target[5].value,
-      from:"form-Signup"
+      from:"form-Signup"     
   }
   props.signUpUser(userData)
+  form.reset()
   
-  
-  handleSubmit.reset()
-  }
+}
+// alert(props.message.message)
   console.log(props.message)
-  // alert(props.message.message)
 
   
   return (
     <div className="formsingup">
-      
-      <div class="container">
+      <Alert/>
+      <div className="container">
       <div>
       <h1>Create your MyTinerary account !!</h1>
       <h2>Already have an account? <LinkRouter to={"/signin"}>Log In</LinkRouter>.</h2>
       </div>
         <div class="screen">
           <div class="screen__content">
-            <form class="login"   onSubmit={handleSubmit}>
+            <form className ="login"   onSubmit={handleSubmit} id="formIn">
               <div class="login__field">
                 <i class="login__icon fas fa-user"></i>
                 <input
@@ -78,11 +80,15 @@ import {Link as LinkRouter } from 'react-router-dom';
                 />
               </div>
               <select class="login__input">
-                <option value="Option 1">Select City</option>
-                <option value="Option 2">Option 2</option>
-                <option value="Option 3">Option 3</option>
-                <option value="Option 4">Option 4</option>
-                <option value="Option 5">Option 5</option>
+                <option value="Select-City">Select City</option>
+                {apiCities.map(cities=>{
+                  return(
+                    <option  key = {cities.name} value={cities.name}> {cities.name} </option>
+                  )
+
+
+                })}
+                
               </select>
               <button class="button login__submit">
                 <span class="button__text"> Sing Up</span>
@@ -109,7 +115,7 @@ const mapDispatchToProps = {
 }
 const mapStateToProps = (state) => {
 	return {
-		message: state.userReducer.message,
+		message: state.userReducer.message
 	}
 }
 
