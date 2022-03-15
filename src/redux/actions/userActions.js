@@ -15,10 +15,11 @@ const userActions = {
         }
     },
     signInUser: (logedUser) => {
-console.log(logedUser)
+
         return async (dispatch, getState) => {
             const user = await axios.post('http://localhost:4000/api/auth/signIn', { logedUser })
             if(user.data.success){
+                localStorage.setItem('token',user.data.response.token)
                 console.log(user.data.success)
             dispatch({type: 'user', payload: user.data.response.userData});
             } dispatch({type: 'message',
@@ -31,6 +32,7 @@ console.log(logedUser)
     SignOutUser :(closeuser)=>{
         return async (dispatch, getState) => {
         const user = axios.post('http://localhost:4000/api/signOut',{closeuser})
+        localStorage.removeItem('token')
         dispatch({type: 'user', payload: null});
     } 
 }

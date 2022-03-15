@@ -115,7 +115,7 @@ const mapDispatchToProps = {
 }
 const mapStateToProps = (state) => {
 	return {
-		message: state.userReducer.message
+		snackbar: state.userReducer.snackbar
 	}
 }
 

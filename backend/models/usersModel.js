@@ -6,8 +6,9 @@ const usersSchema = new mongoose.Schema({
     password:[{type:String, required:true}],
     photoURL:{type:String}, 
     chooseCountry:{type:String, required:true}, 
-    emailVerificado:{type:Boolean, required:true}, 
-    from:{type:Array}
+    from:{type:Array},
+    uniqueString:{type:String, required:true},
+    emailVerificado:{type:Boolean, required:true}
     
          
       

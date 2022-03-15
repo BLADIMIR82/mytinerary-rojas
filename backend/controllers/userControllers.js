@@ -1,7 +1,61 @@
 const User = require('../models/usersModel')
 const bcryptjs = require('bcryptjs') 
+const crypto = require('crypto')        //NPM CRYPTO
+const nodemailer = require('nodemailer') 
+const jwt = require('jsonwebtoken')
+
+
+const sendEmail = async (email, uniqueString) => { //FUNCION ENCARGADA DE ENVIAR EL EMAIL
+
+    const transporter = nodemailer.createTransport({ //DEFINIMOS EL TRASPORTE UTILIZANDO NODEMAILER
+        host: 'smtp.gmail.com',         //DEFINIMOS LO PARAMETROS NECESARIOS
+        port: 465,
+        secure: true,
+        auth: {
+            user: "mindhubbladimir@gmail.com",    //DEFINIMOS LOS DATOS DE AUTORIZACION DE NUESTRO PROVEEDOR DE
+            pass: "Brs1982+"                          //COREO ELECTRONICO, CONFIGURAR CUAENTAS PARA PERMIR EL USO DE APPS
+        }                                               //CONFIGURACIONES DE GMAIL
+    })
+
+    // EN ESTA SECCION LOS PARAMETROS DEL MAIL 
+    let sender = "mindhubbladimir@gmail.com"  
+    let mailOptions = { 
+        from: sender,    //DE QUIEN
+        to: email,       //A QUIEN
+        subject: "Verificacion de email usuario ", //EL ASUNTO Y EN HTML EL TEMPLATE PARA EL CUERPO DE EMAIL Y EL LINK DE VERIFICACION
+        html: `<h1 style="color:blue">Presiona <a href=http://localhost:4000/api/verify/${uniqueString}>aqui</a> para confirma tu email. Gracias </h1>`
+    };
+    await transporter.sendMail(mailOptions, function (error, response) { //SE REALIZA EL ENVIO
+        if (error) { console.log(error) }
+        else {
+            console.log("Mensaje enviado")
+
+        }
+    })
+};
+
+
+
+
 
 const usersControllers = {
+
+    verifyEmail: async (req, res) => {
+
+        const { uniqueString } = req.params; //EXTRAE EL EL STRING UNICO DEL LINK
+
+        const user = await User.findOne({ uniqueString: uniqueString })
+        console.log(user) //BUSCA AL USUARIO CORRESPONDIENTE AL LINK
+        if (user) {
+            user.emailVerificado = true //COLOCA EL CAMPO emailVerified en true
+            await user.save()
+            res.redirect("http://localhost:3000/") //REDIRECCIONA AL USUARIO A UNA RUTA DEFINIDA
+            //return  res.json({success:true, response:"Su email se ha verificado correctamente"})
+        }
+        else { res.json({ success: false, response: "Su email no se ha verificado" }) }
+    },
+
+
 
     signUpUsers:async (req,res)=>{
 
@@ -14,15 +68,19 @@ const usersControllers = {
             if (usuarioExiste) {
                 console.log(usuarioExiste.from.indexOf(from))
                 if (usuarioExiste.from.indexOf(from) === 0) { //INDEXOF = 0 EL VALOR EXISTE EN EL INDICE EQ A TRUE -1 NO EXITE EQ A FALSE
-                    res.json({ success: false, from:"signup", message: "Ya has realizado tu SignUp de esta forma por favor realiza SignIn" })
+                    console.log("resultado de if " +(usuarioExiste.from.indexOf(from) === 0 ))
+                    res.json({ success: false,
+                         from:"signup",
+                          message: "Ya has realizado tu SignUp de esta forma por favor realiza SignIn" })
                 } else {
                     const contraseñaHasheada = bcryptjs.hashSync(password, 10)
                     usuarioExiste.from.push(from)
                     usuarioExiste.password.push(contraseñaHasheada) 
                     if(from === "form-Signup"){ 
                         //PORSTERIORMENTE AGREGAREMOS LA VERIFICACION DE EMAIL
+                        usuarioExiste.uniqueString = crypto.randomBytes(15).toString('hex')
                         await usuarioExiste.save()
-    
+                        await sendEmail(email, usuarioExiste.uniqueString)
                     res.json({
                         success: true, 
                         from:"signup", //RESPONDE CON EL TOKEN Y EL NUEVO USUARIO
@@ -49,7 +107,8 @@ const usersControllers = {
                     password:[contraseñaHasheada],
                     photoURL,
                     chooseCountry,
-                    emailVerificado:true,
+                    uniqueString:crypto.randomBytes(15).toString('hex'),
+                    emailVerificado:false,
                     from:[from],
                 
                 })
@@ -67,10 +126,11 @@ const usersControllers = {
                     //PASAR EMAIL VERIFICADO A FALSE
                     //ENVIARLE EL E MAIL PARA VERIFICAR
                     await nuevoUsuario.save()
+                    await sendEmail(email, nuevoUsuario.uniqueString)
     
                     res.json({
                         success: true, 
-                        from:"siggup",
+                        from:"sign up",
                         message: "Te enviamos un email para validarlo, por favor verifica tu casilla para completar el signUp "
                     }) // AGREGAMOS MENSAJE DE VERIFICACION
                 }
@@ -87,7 +147,7 @@ const usersControllers = {
             const usuarioExiste = await User.findOne({ email })
 
             if (!usuarioExiste) {// PRIMERO VERIFICA QUE EL USUARIO EXISTA
-                res.json({ success: false, message: "Tu usuarios no a sido registrado realiza signIn" })
+                res.json({ success: false, message: "Tu usuarios no a sido registrado realiza signUn" })
 
             } else {
                 if (from !== "form-Signin") { 
@@ -97,16 +157,18 @@ const usersControllers = {
                     if (contraseñaCoincide.length >0) { //TERERO VERIFICA CONTRASEÑA
 
                         const userData = {
+                                        id:usuarioExiste._id,
                                         firstName: usuarioExiste.firstName,
                                         email: usuarioExiste.email,
                                         from:usuarioExiste.from
                                         }
                         await usuarioExiste.save()
+                        const token = jwt.sign({...userData}, process.env.SECRET_KEY,{expiresIn:  60* 60*24 })
 
                         res.json({ success: true, 
                                    from:from,
-                                   response: {userData }, 
-                                   message:"Bienvenido nuevamente "+userData.firstName,
+                                   response: { token,userData }, 
+                                   message:"welcome again "+userData.firstName,
                                  })
 
                     } else {
@@ -118,18 +180,22 @@ const usersControllers = {
                 } else { 
                     if(usuarioExiste.emailVerificado){
                         let contraseñaCoincide =  usuarioExiste.password.filter(pass =>bcryptjs.compareSync(password, pass))
+                        console.log(contraseñaCoincide)
+                        console.log("resultado de busqueda de contrasela: " +(contraseñaCoincide.length >0))
                         if(contraseñaCoincide.length >0){
                         const userData = {
+                            id: usuarioExiste._id,
                             firstName: usuarioExiste.firstName, 
                             email: usuarioExiste.email,
                             photoURL:usuarioExiste.photoURL,
                             from:usuarioExiste.from
                             }
-                        
+                            const token = jwt.sign({...userData}, process.env.SECRET_KEY, {expiresIn:  60* 60*24 })
+
                         res.json({ success: true, 
                             from: from, 
-                            response: {userData }, 
-                            message:"Bienvenido nuevamente "+userData.firstName,
+                            response: {token, userData }, 
+                            message:"welcome again "+userData.firstName,
                           })
                         }else{
                             res.json({ success: false, 

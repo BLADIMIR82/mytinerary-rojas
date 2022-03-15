@@ -3,10 +3,6 @@ import userActions from '.././redux/actions/userActions';
 import {Link as LinkRouter} from "react-router-dom"
 import Alert from '../componentes/Snackbar';
 
-
-
-
-
 function SignIn(props) {
 
 	console.log(props)
@@ -21,7 +17,6 @@ function SignIn(props) {
 		
 	}
 
-	console.log(props.message);
   return (
     <div className="formlogin">
 		 <Alert />
