@@ -23,11 +23,15 @@ function Alert(props) {
   const MySnackbar = styled(Snackbar)({
     backgroundColor: props.snackbar.success ? 'green' : 'red',
     color: '#fff',
-    borderRadius: '4px',
-    padding: '6px 16px',
-    fontWeight: '400',
+    borderRadius: '8px',
+    padding: '16px 16px',
+    fontWeight: '600',
     lineHeight: '1.43',
+    border:"2px solid black",
     letterSpacing: '0.01071em',
+    position: "fixed"
+    
+   
   });
 
   const classes = useStyles();

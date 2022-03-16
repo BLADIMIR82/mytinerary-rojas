@@ -3,27 +3,27 @@ const joi = require('joi')
 const validator = (req, res, next) => {
     const schema = joi.object({
         firstName: joi.string().max(20).min(2).trim().pattern(new RegExp('[a-zA-Z]')).required().messages({
-            'string.min':'El firstName debe contener mas de 3 caracteres',
-            'string.max':"El firstName debe contener como maximo 20 caracteres"
+            'string.min':'The firstName must contain more than 3 characters',
+            'string.max':"The firstName must contain a maximum of 20 characters"
         }),
         lastName: joi.string().max(20).min(2).trim().pattern(new RegExp('[a-zA-Z]')).required().messages({
-            'string.min':'El lastName debe contener mas de 3 caracteres',
-            'string.max':"El lastName debe contener como maximo 20 caracteres"
+            'string.min':'The lastName must contain more than 3 characters',
+            'string.max':"The lastName must contain a maximum of 20 characters"
         }),
 
         email: joi.string().email({ minDomainSegments: 2 }).required().messages({
-            'string.email':'Formato incorrecto de email'
+            'string.email':'Wrong email format'
         }),
         password: joi.string().pattern(new RegExp('[a-zA-Z0-9]')).required().trim().min(8).max(30).messages({
-            'string.min':'El password debe contener minimo 8 caracteres y contener mayuscula, minuscula y numero',
-            'string.pattern':"El password debe ser alphanumerico y contener un numero"
+            'string.min':'The password must contain at least 8 characters and contain uppercase, lowercase and number',
+            'string.pattern':"The password must be alphanumeric and contain a number"
         }),
         photoURL: joi.string().min(5).trim().pattern(new RegExp('[a-zA-Z0-9]')).required().messages({
-            'string.max':"El foto debe contener como maximo 20 caracteres"
+            'string.max':"The photo must contain a maximum of 20 characters"
         }),
         chooseCountry: joi.string().max(20).min(3).trim().pattern(new RegExp('[a-zA-Z]')).required().messages({
-            'string.min':'El Country debe contener mas de 3 caracteres',
-            'string.max':"El  Country debe contener como maximo 20 caracteres"
+            'string.min':'The city must contain more than 3 characters',
+            'string.max':"The Country must contain a maximum of 20 characters"
         }),
         
         

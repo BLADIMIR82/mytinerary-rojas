@@ -6,7 +6,6 @@ import Alert from '../componentes/Snackbar';
 import  apiCities from "../componentes/apicities"
 
  function SignUp(props) {
-  console.log(props)
   let form = document.getElementById("formIn")
 
   const handleSubmit = (event) => {
@@ -34,7 +33,7 @@ import  apiCities from "../componentes/apicities"
       <div className="container">
       <div>
       <h1>Create your MyTinerary account !!</h1>
-      <h2>Already have an account? <LinkRouter to={"/signin"}>Log In</LinkRouter>.</h2>
+      <h2>Already have an account? <LinkRouter to={"/signin"}>Sign In</LinkRouter>.</h2>
       </div>
         <div class="screen">
           <div class="screen__content">

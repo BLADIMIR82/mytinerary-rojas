@@ -45,9 +45,7 @@ const ResponsiveAppBar = (props) => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
-  function SignOut() {
-		props.SignOutUser(props.user.email)
-	}
+ 
   function SignOut(){
     console.log(props.user.email)
     props.signOutUser(props.user.email)
@@ -151,17 +149,17 @@ const ResponsiveAppBar = (props) => {
             >
               {props.user ? (
                   <MenuItem onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center"><LinkRouter className='buttomlink1' onClick={SignOut}to={"#"}>Sign Out</LinkRouter></Typography>
+                    <Typography textAlign="center"><LinkRouter className='buttomlink1' onClick={SignOut}to={"#"}>SignOut</LinkRouter></Typography>
                   </MenuItem>
                  ) : (
 
                     <div>
                       <MenuItem  onClick={handleCloseUserMenu}>
-                      <Typography  textAlign="center"><LinkRouter className='buttomlink1' to={"/signup"}>Sign Up</LinkRouter></Typography>
+                      <Typography  textAlign="center"><LinkRouter className='buttomlink1' to={"/signup"}>SignUp</LinkRouter></Typography>
                       </MenuItem>
 
                       <MenuItem  onClick={handleCloseUserMenu}>
-                      <Typography textAlign="center"><LinkRouter className='buttomlink1' to={"/signin"}>Sign In</LinkRouter></Typography>
+                      <Typography textAlign="center"><LinkRouter className='buttomlink1' to={"/signin"}>Sign  In</LinkRouter></Typography>
                       </MenuItem>
                     </div>
                   )

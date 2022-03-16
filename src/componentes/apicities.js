@@ -8,7 +8,8 @@ const  apiCities = [
     {name: "Dubai"},
     {name: "Chicago"},
     {name: "Moscu"},
-    {name: "Siberia"}
+    {name: "Siberia"},
+    {name: "Soacha"}
    
 ]
 export default apiCities

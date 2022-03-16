@@ -4,7 +4,7 @@ import {Link as LinkRouter} from "react-router-dom"
 import Alert from '../componentes/Snackbar';
 
 function SignIn(props) {
-
+	let form = document.getElementById("formIn")
 	console.log(props)
 	const handleSubmit = (event) => {
 		event.preventDefault()
@@ -14,7 +14,7 @@ function SignIn(props) {
 			from: "form-Signin"
 		}
 		props.signInUser(logedUser)
-		
+		form.reset()
 	}
 
   return (
@@ -27,7 +27,7 @@ function SignIn(props) {
       </div>
 	<div class="screen">
 		<div class="screen__content">
-			<form class="login1" onSubmit={handleSubmit}>
+			<form class="login1" onSubmit={handleSubmit}  id="formIn" >
 				<div class="login__field">
 					<i class="login__icon fas fa-user"></i>
 					<input type="text" class="login__input" placeholder="Please, enter your Email"/>
