@@ -70,7 +70,7 @@ const usersControllers = {
             
             if (usuarioExiste) {
                 console.log(usuarioExiste.from.indexOf(from))
-                if (usuarioExiste.from.indexOf(from) === 0) { //INDEXOF = 0 EL VALOR EXISTE EN EL INDICE EQ A TRUE -1 NO EXITE EQ A FALSE
+                if (usuarioExiste.from.indexOf(from) !== -1) { //INDEXOF = 0 EL VALOR EXISTE EN EL INDICE EQ A TRUE -1 NO EXITE EQ A FALSE
                     console.log("resultado de if " +(usuarioExiste.from.indexOf(from) === 0 ))
                     res.json({ success: false,
                          from:"signup",
@@ -238,6 +238,7 @@ const usersControllers = {
             response: {
               id: req.user.id,
               firstName: req.user.firstName,
+              photoURL:req.user.photoURL,
               email: req.user.email,
               from: "token",
             },

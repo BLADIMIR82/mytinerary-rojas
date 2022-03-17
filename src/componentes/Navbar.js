@@ -43,11 +43,14 @@ const ResponsiveAppBar = (props) => {
   };
 
   const handleCloseUserMenu = () => {
+    SignOut()
     setAnchorElUser(null);
   };
- 
-  function SignOut(props){
-    props.signOutUser(props.user.email)
+
+  function SignOut(){
+   
+    console.log("funcion llamada")
+    props.SignOutUser(props.user.email)
 
   }
 
@@ -115,21 +118,14 @@ const ResponsiveAppBar = (props) => {
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
-            {
-                  props.user ? (
+           
                     <div>
 
                       <IconButton className="usuario-btn" onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                        <Avatar className="usuario-btn" src={props.user.photoURL} alt="usuario" />
-                        {/* <div className="call" style={{backgroundImage:"url(" + process.env.PUBLIC_URL+ "/imagenes/imagencalltoaction.jpg)"}}>wellcome</div> */}
+                        <Avatar className="usuario-btn" src={props.user? props.user.photoURL:icon} alt="usuario" />
                       </IconButton>
                     </div>
-                  ) : (
-                    <IconButton className="usuario-btn" onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                      <Avatar className="usuario-btn" src={icon} alt="usuario" />
-                    </IconButton>
-                  )
-                } 
+                  
             </Tooltip>
             <Menu
               sx={{ mt: '45px' }}
@@ -149,7 +145,7 @@ const ResponsiveAppBar = (props) => {
             >
               {props.user ? (
                   <MenuItem onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center"><LinkRouter className='buttomlink1' onClick={SignOut}to={"#"}>SignOut</LinkRouter></Typography>
+                    <Typography textAlign="center" className='buttomlink1' onClick={SignOut}>SignOut</Typography>
                   </MenuItem>
                  ) : (
 
@@ -159,7 +155,7 @@ const ResponsiveAppBar = (props) => {
                       </MenuItem>
 
                       <MenuItem  onClick={handleCloseUserMenu}>
-                      <Typography textAlign="center"><LinkRouter className='buttomlink1' to={"/signin"}>Sign  In</LinkRouter></Typography>
+                      <Typography textAlign="center"><LinkRouter className='buttomlink1' to={"/signin"}>SignIn</LinkRouter></Typography>
                       </MenuItem>
                     </div>
                   )
@@ -179,7 +175,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
-  signOutUser: userActions.signOutUser
+  SignOutUser: userActions.SignOutUser
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ResponsiveAppBar);
