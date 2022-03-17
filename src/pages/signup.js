@@ -1,11 +1,14 @@
-import React, { useEffect } from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux';
 import userActions from '.././redux/actions/userActions';
 import {Link as LinkRouter } from 'react-router-dom';
-import Alert from '../componentes/Snackbar';
 import  apiCities from "../componentes/apicities"
+import FacebookSignUp from '../componentes/FacebookSignUp';
 
  function SignUp(props) {
+
+  const [paises, setPaises] = useState("select...");
+
   let form = document.getElementById("formIn")
 
   const handleSubmit = (event) => {
@@ -16,91 +19,100 @@ import  apiCities from "../componentes/apicities"
       email:event.target[2].value,
       password:event.target[3].value,
       photoURL:event.target[4].value,
-      chooseCountry:event.target[5].value,
+      chooseCountry:paises,
       from:"form-Signup"     
   }
   props.signUpUser(userData)
   form.reset()
   
 }
-// alert(props.message.message)
-  console.log(props.message)
-
+ 
+  function selectPaises(event) {
+    setPaises(event.target.value);
+  }
   
   return (
     <div className="formsingup">
-      <Alert/>
+     
       <div className="container">
       <div>
       <h1>Create your MyTinerary account !!</h1>
-      <h2>Already have an account? <LinkRouter to={"/signin"}>Sign In</LinkRouter>.</h2>
-      </div>
-        <div class="screen">
-          <div class="screen__content">
-            <form className ="login"   onSubmit={handleSubmit} id="formIn">
-              <div class="login__field">
-                <i class="login__icon fas fa-user"></i>
-                <input
-                  type="text"
-                  class="login__input"
-                  placeholder=" You Firts Name"
-                />
-              </div>
-              <div class="login__field">
-                <i class="login__icon fas fa-user"></i>
-                <input
-                  type="text"
-                  class="login__input"
-                  placeholder=" You Last Name"
-                />
-              </div>
-              <div class="login__field">
-                <i class="login__icon fas fa-user"></i>
-                <input
-                  type="text"
-                  class="login__input"
-                  placeholder=" You Email"
-                />
-              </div>
-              <div class="login__field">
-                <i class="login__icon fas fa-lock"></i>
-                <input
-                  type="password"
-                  class="login__input"
-                  placeholder="Password"
-                />
-              </div>
-              <div class="login__field">
-                <i class="login__icon fas fa-user"></i>
-                <input
-                  type="text"
-                  class="login__input"
-                  placeholder=" Select Avatar"
-                />
-              </div>
-              <select class="login__input">
+      <h1> select country to cotinue </h1>
+            <div>
+      <select onChange={selectPaises} className="login__input">
                 <option value="Select-City">Select City</option>
                 {apiCities.map(cities=>{
                   return(
                     <option  key = {cities.name} value={cities.name}> {cities.name} </option>
                   )
-
-
                 })}
-                
               </select>
-              <button class="button login__submit">
-                <span class="button__text"> Sing Up</span>
-                <i class="button__icon fas fa-chevron-right"></i>
+              <div>
+      <h2>Already have an account? <LinkRouter className='buttomlink3' to={"/signin"}>Sign In</LinkRouter>.</h2>
+      </div>
+              </div>
+      </div>
+      
+        <div className="screen">
+          <div className="screen__content">
+          {paises !== "select..." ? (
+            <form className ="login"   onSubmit={handleSubmit} id="formIn">
+              <div className="login__field">
+                <input
+                  type="text"
+                  className="login__input"
+                  placeholder=" You Firts Name"
+                />
+              </div>
+              <div className="login__field">
+               
+                <input
+                  type="text"
+                  className="login__input"
+                  placeholder=" You Last Name"
+                />
+              </div>
+              <div className="login__field">
+              
+                <input
+                  type="text"
+                  className="login__input"
+                  placeholder=" You Email"
+                />
+              </div>
+              <div className="login__field">
+                
+                <input
+                  type="password"
+                  className="login__input"
+                  placeholder="Password"
+                />
+              </div>
+              <div className="login__field">
+             
+                <input
+                  type="text"
+                  className="login__input"
+                  placeholder=" Select Avatar"
+                />
+              </div>
+            
+              <button className="button login__submit">
+                <span className="button__text"> sign Up</span>
+                
               </button>
-            </form>
+              
+          <FacebookSignUp />
+            </form>) : (
+        <h1></h1>
+      )}
            
           </div>
-          <div class="screen__background">
-            <span class="screen__background__shape screen__background__shape4"></span>
-            <span class="screen__background__shape screen__background__shape3"></span>
-            <span class="screen__background__shape screen__background__shape2"></span>
-            <span class="screen__background__shape screen__background__shape1"></span>
+          <div className="screen__background">
+            <span className="screen__background__shape screen__background__shape4"></span>
+            <span className="screen__background__shape screen__background__shape3"></span>
+            <span className="screen__background__shape screen__background__shape2"></span>
+            <span className="screen__background__shape screen__background__shape1"></span>
           </div>
         </div>
       </div>

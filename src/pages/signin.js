@@ -1,17 +1,16 @@
 import { connect } from 'react-redux';
 import userActions from '.././redux/actions/userActions';
 import {Link as LinkRouter} from "react-router-dom"
-import Alert from '../componentes/Snackbar';
+import FacebookSignIn from '../componentes/FacebookSignIn';
 
 function SignIn(props) {
 	let form = document.getElementById("formIn")
-	console.log(props)
-	const handleSubmit = (event) => {
+		const handleSubmit = (event) => {
 		event.preventDefault()
 		const logedUser = {
 			email: event.target[0].value,
 			password: event.target[1].value,
-			from: "form-Signin"
+			from: "form-Signup"
 		}
 		props.signInUser(logedUser)
 		form.reset()
@@ -19,38 +18,44 @@ function SignIn(props) {
 
   return (
     <div className="formlogin">
-		 <Alert />
-    <div class="container">
+    <div className="container">
 	<div>
       <h1>Wellcome!! your MyTinerary</h1>
-		<h2>Don't have an account? <LinkRouter to={"/signup"}>SingUp</LinkRouter> </h2>
+		<h2>Don't have an account? <LinkRouter className='buttomlink3'  to={"/signup"}>SignUp</LinkRouter> </h2>
       </div>
-	<div class="screen">
-		<div class="screen__content">
-			<form class="login1" onSubmit={handleSubmit}  id="formIn" >
-				<div class="login__field">
-					<i class="login__icon fas fa-user"></i>
-					<input type="text" class="login__input" placeholder="Please, enter your Email"/>
+	<div className="screen">
+		<div className="screen__content">
+			<form className="login1" onSubmit={handleSubmit}  id="formIn" >
+				<div className="login__field">
+					<input type="text" className="login__input" placeholder="Please, enter your Email"/>
 				</div>
-				<div class="login__field">
-					<i class="login__icon fas fa-lock"></i>
-					<input type="password" class="login__input" placeholder="Password"/>
+				<div className="login__field">
+				
+					<input type="password" className="login__input" placeholder="Password"/>
 				</div>
-				<button class="button login__submit">
-					<span class="button__text">Log In</span>
-					<i class="button__icon fas fa-chevron-right"></i>
+				<button className="button login__submit">
+					<span className="button__text">Sign In</span>
 				</button>	
-                <button class="button login__submit">
-					<span class="button__text"> Sing up with Google</span>
-					<i class="button__icon fas fa-chevron-right"></i>
-				</button>					
+				<FacebookSignIn />
 			</form>
+				<div className="iconsocial1">
+				<div>
+					<h4>know more about us in !!</h4>
+				</div>
+				<div>
+              <a href="https://www.facebook.com/"><img src="../imagenes/logofacebook.png" alt="img"  className="iconsocials" /></a>
+               <a href="https://www.instagram.com/accounts/login/?hl=es&sour..."> <img src="../imagenes/instagram.png" alt="img"  className="iconsocials" /> </a>
+                <a href= "https://www.youtube.com/"> <img src="../imagenes/youtube.png" alt="img"  className="iconsocials" /></a>
+                <a href="https://mobile.twitter.com/i/flow/login"><img src="../imagenes/twitter.png" alt="img"  className="iconsocials" /> </a>
+                </div>
+				</div>
+
 		</div>
-		<div class="screen__background">
-			<span class="screen__background__shape screen__background__shape4"></span>
-			<span class="screen__background__shape screen__background__shape3"></span>		
-			<span class="screen__background__shape screen__background__shape2"></span>
-			<span class="screen__background__shape screen__background__shape1"></span>
+		<div className="screen__background">
+			<span className="screen__background__shape screen__background__shape4"></span>
+			<span className="screen__background__shape screen__background__shape3"></span>		
+			<span className="screen__background__shape screen__background__shape2"></span>
+			<span className="screen__background__shape screen__background__shape1"></span>
 		</div>		
 	</div>
 </div>

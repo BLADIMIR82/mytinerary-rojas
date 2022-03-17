@@ -122,6 +122,7 @@ const ResponsiveAppBar = (props) => {
 
                       <IconButton className="usuario-btn" onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                         <Avatar className="usuario-btn" src={props.user.photoURL} alt="usuario" />
+                        {/* <div className="call" style={{backgroundImage:"url(" + process.env.PUBLIC_URL+ "/imagenes/imagencalltoaction.jpg)"}}>wellcome</div> */}
                       </IconButton>
                     </div>
                   ) : (

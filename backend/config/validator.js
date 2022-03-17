@@ -21,10 +21,8 @@ const validator = (req, res, next) => {
         photoURL: joi.string().min(5).trim().pattern(new RegExp('[a-zA-Z0-9]')).required().messages({
             'string.max':"The photo must contain a maximum of 20 characters"
         }),
-        chooseCountry: joi.string().max(20).min(3).trim().pattern(new RegExp('[a-zA-Z]')).required().messages({
-            'string.min':'The city must contain more than 3 characters',
-            'string.max':"The Country must contain a maximum of 20 characters"
-        }),
+        chooseCountry: joi.string(),
+        
         
         
         from:joi.string()

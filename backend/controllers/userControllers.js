@@ -227,6 +227,26 @@ const usersControllers = {
         await user.save()
         res.json(console.log(' ended session ' + email))
     },
+    verificarToken: (req, res) => {
+        console.log(req.user);
+        if (!req.err) {
+          res.json({
+            success: true,
+            response: {
+              id: req.user.id,
+              firstName: req.user.firstName,
+              email: req.user.email,
+              from: "token",
+            },
+            message: "Bienvenido nuevamente " + req.user.firstName,
+          });
+        } else {
+          res.json({
+            success: false,
+            message: "Por favor realiza nuevamente signIn",
+          });
+        }
+      },
 
 }
 module.exports = usersControllers

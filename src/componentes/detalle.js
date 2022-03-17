@@ -35,11 +35,11 @@ function CardsDetalle(props) {
     
     <div className= "cardsDetalle">
    
-<div class="cards">
-<div class="card">
-  <h2 class="card-title">{card.element.name}</h2>
+<div className="cards">
+<div className="card">
+  <h2 className="card-title">{card.element.name}</h2>
   <img src={process.env.PUBLIC_URL+ `/imagenes/${card.element.image}`} />
-  <p class="card-desc">{card.element.info}</p>
+  <p className="card-desc">{card.element.info}</p>
 </div>
 </div>
     

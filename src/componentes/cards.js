@@ -1,10 +1,8 @@
 import * as React from 'react';
 import {Link as LinkRouter} from "react-router-dom"
-
 import Loader from "../componentes/loader"
 
 export default function Cards(props) {
-
 
   return (
     
