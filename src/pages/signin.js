@@ -4,7 +4,7 @@ import {Link as LinkRouter} from "react-router-dom"
 import FacebookSignIn from '../componentes/FacebookSignIn';
 
 function SignIn(props) {
-	let form = document.getElementById("formIn")
+
 		const handleSubmit = (event) => {
 		event.preventDefault()
 		const logedUser = {
@@ -13,7 +13,7 @@ function SignIn(props) {
 			from: "form-Signup"
 		}
 		props.signInUser(logedUser)
-		form.reset()
+	
 	}
 
   return (

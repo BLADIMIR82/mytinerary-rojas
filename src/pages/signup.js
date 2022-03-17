@@ -37,7 +37,7 @@ import FacebookSignUp from '../componentes/FacebookSignUp';
       <div className="container">
       <div>
       <h1>Create your MyTinerary account !!</h1>
-      <h1> select country to cotinue </h1>
+      <h1> Select your City of interest </h1>
             <div>
       <select onChange={selectPaises} className="login__input">
                 <option value="Select-City">Select City</option>
@@ -102,7 +102,7 @@ import FacebookSignUp from '../componentes/FacebookSignUp';
                 
               </button>
               
-          <FacebookSignUp />
+          <FacebookSignUp   paises={paises} />
             </form>) : (
         <h1></h1>
       )}

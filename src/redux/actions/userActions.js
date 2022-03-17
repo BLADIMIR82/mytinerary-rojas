@@ -27,7 +27,7 @@ const userActions = {
                       success: user.data.success}});
 
         } 
-    },
+    },   
     SignOutUser :(closeuser)=>{
         return async (dispatch, getState) => {
         const user = axios.post('http://localhost:4000/api/signOut',{closeuser})

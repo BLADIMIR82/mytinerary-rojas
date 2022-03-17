@@ -22,10 +22,11 @@ const sendEmail = async (email, uniqueString) => { //FUNCION ENCARGADA DE ENVIAR
     let mailOptions = { 
         from: sender,    //DE QUIEN
         to: email,       //A QUIEN
-        subject: "Verificacion de email usuario ", //EL ASUNTO Y EN HTML EL TEMPLATE PARA EL CUERPO DE EMAIL Y EL LINK DE VERIFICACION
-        html: `<h2 style="color:red">Press  <a href=http://localhost:4000/api/verify/${uniqueString}>here</a> to confirm your email. Thanks </h2>
-                 <h1 style="color:red">  welcome to My Tinery!!! <h1>  `   
-       
+        subject: "User email verification ", //EL ASUNTO Y EN HTML EL TEMPLATE PARA EL CUERPO DE EMAIL Y EL LINK DE VERIFICACION
+        html: `<div>
+        <h1 style="color:red">  welcome to My Tinery!!! <h1>
+        <h2 style="color:red">Press  <a href=http://localhost:4000/api/verify/${uniqueString}>here</a> to confirm your email. Thanks </h2>  
+        </div> `  
     };
     await transporter.sendMail(mailOptions, function (error, response) { //SE REALIZA EL ENVIO
         if (error) { console.log(error) }
@@ -62,7 +63,7 @@ const usersControllers = {
     signUpUsers:async (req,res)=>{
 
         let {firstName, lastName, email, password,  photoURL, chooseCountry, from } = req.body.userData
-
+        const test = req.body.test
         try {
     
             const usuarioExiste = await User.findOne({ email }) //BUSCAR SI EL USUARIO YA EXISTE EN DB
@@ -147,12 +148,13 @@ const usersControllers = {
         const { email, password,  from } = req.body.logedUser
         try {
             const usuarioExiste = await User.findOne({ email })
-
+            console.log(usuarioExiste.from)
+            console.log(from)
             if (!usuarioExiste) {// PRIMERO VERIFICA QUE EL USUARIO EXISTA
-                res.json({ success: false, message: "Your users have not been registered, signUn" })
+                res.json({ success: false, message: "Your users have not been registered, signUp" })
 
             } else {
-                if (from !== "form-Signin") { 
+                if (from !== "form-Signup") { 
                     
                     let contraseñaCoincide =  usuarioExiste.password.filter(pass =>bcryptjs.compareSync(password, pass))
                     
@@ -162,6 +164,7 @@ const usersControllers = {
                                         id:usuarioExiste._id,
                                         firstName: usuarioExiste.firstName,
                                         email: usuarioExiste.email,
+                                        photoURL:usuarioExiste.photoURL,
                                         from:usuarioExiste.from
                                         }
                         await usuarioExiste.save()
@@ -183,7 +186,7 @@ const usersControllers = {
                     if(usuarioExiste.emailVerificado){
                         let contraseñaCoincide =  usuarioExiste.password.filter(pass =>bcryptjs.compareSync(password, pass))
                         console.log(contraseñaCoincide)
-                        console.log("resultado de busqueda de contrasela: " +(contraseñaCoincide.length >0))
+                        console.log("resultado de busqueda de contrasena: " +(contraseñaCoincide.length >0))
                         if(contraseñaCoincide.length >0){
                         const userData = {
                             id: usuarioExiste._id,

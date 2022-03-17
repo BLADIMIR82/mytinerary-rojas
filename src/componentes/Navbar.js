@@ -46,8 +46,7 @@ const ResponsiveAppBar = (props) => {
     setAnchorElUser(null);
   };
  
-  function SignOut(){
-    console.log(props.user.email)
+  function SignOut(props){
     props.signOutUser(props.user.email)
 
   }
