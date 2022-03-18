@@ -43,7 +43,7 @@ const ResponsiveAppBar = (props) => {
   };
 
   const handleCloseUserMenu = () => {
-    SignOut()
+    // SignOut()
     setAnchorElUser(null);
   };
 
