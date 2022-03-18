@@ -721,17 +721,18 @@ button:hover .button-text {
   border-bottom: 2px solid #0f0f0f;
   background: none;
   padding: 10px;
-  padding-left: 50px;
-  font-weight: 900;
+  padding-left: 30px;
+  font-weight: 1rem;
   width: 90%;
   transition: 0.2s;
+  
 }
 
 .login__input:active,
 .login__input:focus,
 .login__input:hover {
   outline: none;
-  border-bottom-color: #acacb9;
+  border-bottom-color: #f80909de;
 }
 
 .login__submit {

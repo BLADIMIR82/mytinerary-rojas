@@ -1,8 +1,8 @@
 const User = require('../models/usersModel')
 const bcryptjs = require('bcryptjs') 
-const crypto = require('crypto')        //NPM CRYPTO
-const nodemailer = require('nodemailer') 
-const jwt = require('jsonwebtoken')
+const crypto = require('crypto')  //encrypta las contraseñas     
+const nodemailer = require('nodemailer') //verificacion de email
+const jwt = require('jsonwebtoken') //envio de token
 
 
 const sendEmail = async (email, uniqueString) => { //FUNCION ENCARGADA DE ENVIAR EL EMAIL
@@ -185,7 +185,7 @@ const usersControllers = {
                 } else { 
                     if(usuarioExiste.emailVerificado){
                         let contraseñaCoincide =  usuarioExiste.password.filter(pass =>bcryptjs.compareSync(password, pass))
-                        console.log(contraseñaCoincide)
+                        // console.log(contraseñaCoincide)
                         console.log("resultado de busqueda de contrasena: " +(contraseñaCoincide.length >0))
                         if(contraseñaCoincide.length >0){
                         const userData = {
