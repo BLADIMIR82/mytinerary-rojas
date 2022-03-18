@@ -37,7 +37,7 @@ import FacebookSignUp from '../componentes/FacebookSignUp';
       <div className="container">
       <div>
       <h1>Create your MyTinerary account !!</h1>
-      <h1> Select your City of interest </h1>
+      <h1> Select your City of interest: </h1>
             <div>
       <select onChange={selectPaises} className="login__input">
                 <option value="Select-City">Select City</option>
@@ -56,7 +56,8 @@ import FacebookSignUp from '../componentes/FacebookSignUp';
         <div className="screen">
           <div className="screen__content">
           {paises !== "select..." ? (
-            <form className ="login"   onSubmit={handleSubmit} id="formIn">
+            <div className="login">
+            <form style={{backgroundImage:"url(" + process.env.PUBLIC_URL+ "./imagenes/imagencalltoaction.jpg)"}}  onSubmit={handleSubmit} id="formIn">
               <div className="login__field">
                 <input
                   type="text"
@@ -96,24 +97,27 @@ import FacebookSignUp from '../componentes/FacebookSignUp';
                   placeholder=" Select Avatar"
                 />
               </div>
-            
+              <div className='button1'>
               <button className="button login__submit">
                 <span className="button__text"> sign Up</span>
                 
               </button>
-              
           <FacebookSignUp   paises={paises} />
-            </form>) : (
+            </div>
+            </form>
+            </div>  ) : (
+          
         <h1></h1>
-      )}
-           
+      )
+
+    }
           </div>
-          <div className="screen__background">
+          {/* <div className="screen__background">
             <span className="screen__background__shape screen__background__shape4"></span>
             <span className="screen__background__shape screen__background__shape3"></span>
             <span className="screen__background__shape screen__background__shape2"></span>
             <span className="screen__background__shape screen__background__shape1"></span>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

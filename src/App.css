@@ -607,24 +607,25 @@ button:hover .button-text {
 }
 .container {
   display: flex;
+  flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
   min-height: 100%;
-  margin: 6rem 0;
+  margin: 7rem 2rem;
 }
 
 .screen {
-  background: linear-gradient(90deg, #000000c7, #2a2a2ab4);
-  position: relative;
-  height: 100vh;
-  width: 50vw;
-  box-shadow: 0px 0px 24px #000000;
+  
+  height: 110vh;
+  width: 48vw;
+ 
 }
 
 .screen__content {
   z-index: 1;
   position: relative;
   height: 100%;
+  
 }
 
 .screen__background {
@@ -688,13 +689,16 @@ button:hover .button-text {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 1rem;
 }
 .login1 {
-  margin-top: 2rem;
-  padding: 5rem 2rem 2rem 2rem;
+  margin-top: 1rem;
+  padding: 7rem 2rem 2rem 4rem;
   display: flex;
   flex-direction: column;
+  height: 80vh;
   align-items: center;
+  
 }
 
 .login__field {
@@ -717,9 +721,9 @@ button:hover .button-text {
   border-bottom: 2px solid #0f0f0f;
   background: none;
   padding: 10px;
-  padding-left: 24px;
-  font-weight: 700;
-  width: 75%;
+  padding-left: 50px;
+  font-weight: 900;
+  width: 90%;
   transition: 0.2s;
 }
 
@@ -798,7 +802,11 @@ button:hover .button-text {
   font-size: 1.8rem;
 }
 h4{
-  color: blue;
+  color: rgb(8, 8, 8);
+  
+}
+h2{
+  padding-top: 1rem;
 }
 .iconsocial1 {
   display: flex;
@@ -815,10 +823,31 @@ h4{
   margin-top: 2rem ;
   height: 9vh;
   border-radius: 2rem;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   padding: 0rem 2.2rem;
   border: 2px solid black;
 	
+}
+#formIn{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+.button1{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 1.8rem;
+}
+.button2{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+   width: 100%;
+   padding-top: 2rem;
 }
 
 /* ///////////////////////////////
@@ -928,6 +957,7 @@ h4{
   .container {
     display: flex;
     flex-direction: column;
+    
   }
   .login__field {
     padding: 12px 0px;
@@ -942,5 +972,18 @@ h4{
   padding: 0rem 2rem;
   border: 2px solid black;
 	
+}
+}
+@media screen and (max-width: 992px) {
+  .my-facebook-button-class{
+    background-color: rgb(52, 52, 207);
+    color:white;
+    margin-top: 2rem ;
+    height: 9vh;
+    border-radius: 2rem;
+    font-size: 1.1rem;
+    padding: 0rem 2rem;
+    border: 2px solid black;
+    
 }
 }

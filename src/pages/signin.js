@@ -24,8 +24,8 @@ function SignIn(props) {
 		<h2>Don't have an account? <LinkRouter className='buttomlink3'  to={"/signup"}>SignUp</LinkRouter> </h2>
       </div>
 	<div className="screen">
-		<div className="screen__content">
-			<form className="login1" onSubmit={handleSubmit}  id="formIn" >
+		<div style={{backgroundImage:"url(" + process.env.PUBLIC_URL+ "./imagenes/imagencalltoaction.jpg)"}}   className="screen__content">
+			<form   className="login1" onSubmit={handleSubmit}  >
 				<div className="login__field">
 					<input type="text" className="login__input" placeholder="Please, enter your Email"/>
 				</div>
@@ -33,10 +33,12 @@ function SignIn(props) {
 				
 					<input type="password" className="login__input" placeholder="Password"/>
 				</div>
+				<div className='button2'>
 				<button className="button login__submit">
 					<span className="button__text">Sign In</span>
 				</button>	
 				<FacebookSignIn />
+				</div>
 			</form>
 				<div className="iconsocial1">
 				<div>
@@ -51,12 +53,12 @@ function SignIn(props) {
 				</div>
 
 		</div>
-		<div className="screen__background">
+		{/* <div className="screen__background">
 			<span className="screen__background__shape screen__background__shape4"></span>
 			<span className="screen__background__shape screen__background__shape3"></span>		
 			<span className="screen__background__shape screen__background__shape2"></span>
 			<span className="screen__background__shape screen__background__shape1"></span>
-		</div>		
+		</div>		 */}
 	</div>
 </div>
 
