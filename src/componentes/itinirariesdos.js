@@ -6,6 +6,7 @@ import CardActions from "@mui/material/CardActions";
 import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
 import { useEffect } from "react";
+import {useState} from "react"
 import  itinerariesActions from "../redux/actions/itinerariesAction"
 import {connect} from "react-redux"
 import  NoItineraries from "./noitineraries"
@@ -28,7 +29,7 @@ function RecipeReviewCard(props) {
     setExpanded(!expanded);
   };
   
-
+  const [count, setCount] = useState(0);
     
 
   
@@ -65,10 +66,11 @@ function RecipeReviewCard(props) {
         <div>
           <h3>Likes:</h3>
         </div>
-        <div>
-          <img src={process.env.PUBLIC_URL+ `/imagenes/${evento.likes}`  } />
+        <div> 
+        {count}
+        <h3>  <button onClick={() => setCount(prevCount => prevCount + 1 )}>🤍  {evento.likes}</button>   </h3>
         </div>
-        <div>
+        <div> 
           <h3>{evento.hashtag}</h3>
         </div>
         </div>
@@ -115,6 +117,7 @@ const mapDispatchToProps  ={
   
   fetchearUnaItinerary:itinerariesActions.fetchearUnaItinerary,
 
+  
 
 }
 

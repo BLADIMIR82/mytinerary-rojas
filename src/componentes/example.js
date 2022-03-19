@@ -12,3 +12,10 @@ export default function Counter() {
     );
   }
 
+
+  <>
+  {props.itinerariesByCity?.length !== 0?(props.itinerariesByCity?.map(evento=> ( 
+    <RecipeReviewCard id={id}/>
+  ))):( <NoItineraries />)}
+
+  </> 

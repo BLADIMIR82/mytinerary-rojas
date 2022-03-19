@@ -5,7 +5,7 @@ const itinerariesSchema = new mongoose.Schema({
     username:{type:String, required:true},
     price:{type:Number, required:true},
     duration:{type:String, required:true},
-    likes:{type:String, required:true},
+    likes:{type:Number,default:0},
     itinerary:{type:String, required:true},
     itineraryactivity:{type:String, required:true}, 
     location:{type:String, required:true}, 

@@ -4,8 +4,13 @@ import userActions from '.././redux/actions/userActions';
 import {Link as LinkRouter } from 'react-router-dom';
 import  apiCities from "../componentes/apicities"
 import FacebookSignUp from '../componentes/FacebookSignUp';
+import { useEffect } from "react";
 
  function SignUp(props) {
+  
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   const [paises, setPaises] = useState("select...");
 

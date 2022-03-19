@@ -148,8 +148,7 @@ const usersControllers = {
         const { email, password,  from } = req.body.logedUser
         try {
             const usuarioExiste = await User.findOne({ email })
-            console.log(usuarioExiste.from)
-            console.log(from)
+            
             if (!usuarioExiste) {// PRIMERO VERIFICA QUE EL USUARIO EXISTA
                 res.json({ success: false, message: "Your users have not been registered, signUp" })
 
@@ -162,10 +161,10 @@ const usersControllers = {
 
                         const userData = {
                                         id:usuarioExiste._id,
-                                        firstName: usuarioExiste.firstName,
-                                        email: usuarioExiste.email,
+                                        firstName:usuarioExiste.firstName,
+                                        email:usuarioExiste.email,
                                         photoURL:usuarioExiste.photoURL,
-                                        from:usuarioExiste.from
+                                        from:from
                                         }
                         await usuarioExiste.save()
                         const token = jwt.sign({...userData}, process.env.SECRET_KEY,{expiresIn:  60* 60*24 })
@@ -229,6 +228,9 @@ const usersControllers = {
         const user = await User.findOne({ email })
         await user.save()
         res.json(console.log(' ended session ' + email))
+        
+        
+
     },
     verificarToken: (req, res) => {
         console.log(req.user);
@@ -248,6 +250,8 @@ const usersControllers = {
           res.json({
             success: false,
             message: "Por favor realiza nuevamente signIn",
+
+            
           });
         }
       },

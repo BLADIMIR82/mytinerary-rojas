@@ -2,8 +2,13 @@ import { connect } from 'react-redux';
 import userActions from '.././redux/actions/userActions';
 import {Link as LinkRouter} from "react-router-dom"
 import FacebookSignIn from '../componentes/FacebookSignIn';
+import { useEffect } from "react";
 
 function SignIn(props) {
+
+	useEffect(() => {
+		window.scrollTo(0, 0)
+	  }, [])	
 
 		const handleSubmit = (event) => {
 		event.preventDefault()

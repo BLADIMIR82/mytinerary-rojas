@@ -53,7 +53,7 @@ function CardsDetalle(props) {
     </div>
   )
 }
-const mapDispatchToProps  ={
+const mapDispatchToProps  ={ //trae el metodo de los actions
   fetchearCities:citiesActions.fetchearCities,
   fetchearItinerary:itinerariesActions.fetchearItinerary,
   filtrarCities:citiesActions. filtrarCities,
@@ -61,7 +61,7 @@ const mapDispatchToProps  ={
 
 }
 
-const mapStateToProps = (state) =>{
+const mapStateToProps = (state) =>{  //trae los estados declarados en los reducers
   return{
       cities:state.citiesReducer.cities,
       auxiliar: state.citiesReducer.auxiliar,
