@@ -10,7 +10,7 @@ import {useState} from "react"
 import  itinerariesActions from "../redux/actions/itinerariesAction"
 import {connect} from "react-redux"
 import  NoItineraries from "./noitineraries"
-
+import CardActivities from "./cardActivities"
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
   return <IconButton {...other} />;
@@ -88,16 +88,9 @@ function RecipeReviewCard(props) {
       </CardActions>
       <Collapse  sx={{ maxWidth: 700}}  in={expanded} timeout="auto" unmountOnExit>
         <CardContent  >
-        <div className="activitiescarrousell">
-            <div> 
-        <h1>Activities</h1>
-       <p> {evento.tineraryoneactivity}</p>
-      <p>{evento.locationone}</p> 
-        </div>
-      </div>
-      <div className='comments'> 
-     <h1>Comments</h1>
-        </div>
+        
+        <CardActivities/>
+      
           <ExpandMore
             expand={expanded}
             onClick={handleExpandClick}

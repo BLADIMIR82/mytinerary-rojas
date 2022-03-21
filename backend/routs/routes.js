@@ -2,7 +2,8 @@ const Router = require('express').Router();
 const validator = require('../config/validator')
 const ciudadesControllers= require('../controllers/ciudadesControllers');
 const {obtenerCiudades, obtenerUnaCiudad, cargarCiudad, borrarCiudad, modificarCiudad}=ciudadesControllers
-const passport = require('../config/passport')
+const passport = require('../config/passport');
+const activitiesControllers= require('../controllers/activitiesControllers');
 
 Router.route('/allcities')
 .get(obtenerCiudades)
@@ -47,6 +48,25 @@ Router.route('/verify/:uniqueString') //RECIBE EL LINK DE USUARIO
 
 Router.route('/auth/signInToken')
 .get(passport.authenticate('jwt',{ session:false }), verificarToken)
- 
+
+///////////////////////////////////////controllers activities////////////////////////////////////
+const {obtenerActivities, cargarActivities, borrarActivities, modificarActivities,obtenerUnActivities, obtenerActividadporItinerario} = activitiesControllers
+
+Router.route('/allactivities')
+  .get(obtenerActivities)
+  .post(cargarActivities)
+
+
+Router.route('/allactivities/:id')
+  .delete(borrarActivities)
+  .put(modificarActivities)
+  .get(obtenerUnActivities)
+
+
+Router.route('/allactivities/itinerary/:id')
+  .get(obtenerActividadporItinerario)
+
+
+
 
 module.exports = Router
