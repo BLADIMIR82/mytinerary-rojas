@@ -2,12 +2,11 @@ const initialState = {
     activities:[],
     auxiliar:[],
    filterActivities: [],
-   itinerariesByCity:  []
+   activitiesByItinerary:  []
 
 }
 
 const activitiesReducer = (state = initialState, action)=>{
-  
     switch(action.type){
         case 'fetchActivities':
             
@@ -19,10 +18,10 @@ const activitiesReducer = (state = initialState, action)=>{
                 
             }
             
-            case "fetchearUnaActivities":
+            case "fetchearUnaActivity":
             return{
                 ...state,
-                itinerariesByCity: action.payload,
+                activitiesByItinerary: action.payload,
             }
             
             case "filterActivitiesForItinerary":

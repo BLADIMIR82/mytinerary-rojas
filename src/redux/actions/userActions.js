@@ -31,8 +31,13 @@ const userActions = {
     SignOutUser :(closeuser)=>{
         return async (dispatch, getState) => {
         const user = axios.post('http://localhost:4000/api/signOut',{closeuser})
+            console.log(user)
         localStorage.removeItem('token')
         dispatch({type: 'user', payload: null});
+        dispatch({type: 'message',
+            payload: {view: true,
+                      message: "Ended Session",
+                      success: false,}});
     } 
 },
 

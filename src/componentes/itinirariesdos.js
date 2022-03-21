@@ -11,6 +11,8 @@ import  itinerariesActions from "../redux/actions/itinerariesAction"
 import {connect} from "react-redux"
 import  NoItineraries from "./noitineraries"
 import CardActivities from "./cardActivities"
+
+
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
   return <IconButton {...other} />;
@@ -23,6 +25,9 @@ const ExpandMore = styled((props) => {
 
 
 function RecipeReviewCard(props) {
+  console.log(props)
+ 
+ 
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
@@ -89,7 +94,7 @@ function RecipeReviewCard(props) {
       <Collapse  sx={{ maxWidth: 700}}  in={expanded} timeout="auto" unmountOnExit>
         <CardContent  >
         
-        <CardActivities/>
+        <CardActivities id={evento._id}/>
       
           <ExpandMore
             expand={expanded}
@@ -110,7 +115,7 @@ const mapDispatchToProps  ={
   
   fetchearUnaItinerary:itinerariesActions.fetchearUnaItinerary,
 
-  
+     
 
 }
 

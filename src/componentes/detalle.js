@@ -43,6 +43,8 @@ function CardsDetalle(props) {
 </div>
 </div>
     
+
+    
     <div>
 
 <RecipeReviewCard id={id}/>
@@ -55,7 +57,7 @@ function CardsDetalle(props) {
 }
 const mapDispatchToProps  ={ //trae el metodo de los actions
   fetchearCities:citiesActions.fetchearCities,
-  fetchearItinerary:itinerariesActions.fetchearItinerary,
+  // fetchearItinerary:itinerariesActions.fetchearItinerary,
   filtrarCities:citiesActions. filtrarCities,
   fetchearUnaCiudad: citiesActions.fetchearUnaCiudad
 

@@ -24,7 +24,7 @@ const sendEmail = async (email, uniqueString) => { //FUNCION ENCARGADA DE ENVIAR
         to: email,       //A QUIEN
         subject: "User email verification ", //EL ASUNTO Y EN HTML EL TEMPLATE PARA EL CUERPO DE EMAIL Y EL LINK DE VERIFICACION
         html: `<div>
-        <h1 style="color:red">  welcome to My Tinery!!! <h1>
+        <h1 style="color:red">  welcome to My Tinerary!!! <h1>
         <h2 style="color:red">Press  <a href=http://localhost:4000/api/verify/${uniqueString}>here</a> to confirm your email. Thanks </h2>  
         </div> `  
     };
@@ -227,7 +227,9 @@ const usersControllers = {
         const email = req.body.closeuser
         const user = await User.findOne({ email })
         await user.save()
-        res.json(console.log(' ended session ' + email))
+        res.json({ success: false, 
+            message:"ended session",
+          })
         
         
 

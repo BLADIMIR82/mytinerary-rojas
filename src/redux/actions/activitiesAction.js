@@ -9,25 +9,23 @@ const activitiesActions = {
             dispatch({type:'fetchActivities', payload:res.data.response.activities})
        }
     },
-    
-    filterActivityforItinerary: (id) => {
-
+   
+    fetchearUnaActivity: (id) =>{
         return async (dispatch, getState) => {
-          const res = await axios.get('http://localhost:4000/api/allactivities/itinerary/${id}')
-          dispatch({ type: "filterActivitiesForItinerary", payload: res.data.respuesta })
-        }
-      },
-
-    fetchearUnaItinerary: (id) =>{
-        return async (dispatch, getState) => {
-            const res = await axios.get("http://localhost:4000/api/allitineraries/"+id)
-         
-            dispatch({type:'fetchearUnaItinerary', payload:res.data.response.itinerary})
+            const res = await axios.get("http://localhost:4000/api/allactivities/"+id)
+             dispatch({type:'fetchearUnaActivity', payload:res.data.response.activities})
           
         }
     },
 
-   
+    filterActivityforItinerary: (id) => {
+
+      return async (dispatch, getState) => {
+        const res = await axios.get('http://localhost:4000/api/allactivities/itinerary/${id}')
+        dispatch({ type: "filterActivitiesForItinerary", payload: res.data.respuesta })
+      }
+    },
+
   
    
 
@@ -37,4 +35,4 @@ const activitiesActions = {
 
 }
 
-export default itinerariesActions;
+export default activitiesActions;

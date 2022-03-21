@@ -1,25 +1,56 @@
+import {connect} from "react-redux"
+import activitiesActions from "../redux/actions/activitiesAction"
+import { useEffect } from "react";
 
-export default function CardActivities() {
+ function CardActivities(props) {
+console.log(props)
+
+useEffect(()=>{
+
+    props.fetchearUnaActivity(props.id)
+},[])
+
     return (
+    
         <div className="activities"> 
-        <div>
-        <h1>Activities</h1>
-        </div>
-        <div className="imageactivities">
-         <div>
-         <img className="imagenes" src={process.env.PUBLIC_URL+ `/imagenes/imagencalltoaction.jpg`} />
-          <h3>tittle1</h3>
-         </div>
-         <div>
-         <img className="imagenes" src={process.env.PUBLIC_URL+ `/imagenes/imagencalltoaction.jpg`} />
-         <h3>tittle2</h3>
-         </div>
-         <div>
-         <img className="imagenes" src={process.env.PUBLIC_URL+ `/imagenes/imagencalltoaction.jpg`} />
-         <h3>tittle3</h3>
-         </div>
-         </div>
-         </div>
-        
+         {props.activitiesByItinerary?.map((evento)=> ( 
+        <><div>
+            <h1>Activities</h1>
+          </div><div className="imageactivities">
+              <div>
+              <img className="imagenes" src={evento.imageactivity1} />
+                <h5>{evento.tittle1}</h5>   
+              </div>
+              <div>
+                <img className="imagenes" src={evento.imageactivity2} />
+                <h5>{evento.tittle2}</h5>
+              </div>
+              <div>
+                <img className="imagenes"  src={evento.imageactivity3} />
+                <h5>{evento.tittle3}</h5>
+              </div>
+            </div>
+            </>
+               ))}
+            </div>
+
+                
+       
     );
   }
+
+  const mapDispatchToProps  ={
+  
+    fetchearUnaActivity:activitiesActions.fetchearUnaActivity,
+  
+  
+  }
+  const mapStateToProps = (state) =>{
+    return{
+             
+      
+      activitiesByItinerary: state.activitiesReducer.activitiesByItinerary
+    }
+  }
+  
+  export default connect(mapStateToProps, mapDispatchToProps)(CardActivities)
