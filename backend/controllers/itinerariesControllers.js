@@ -77,6 +77,36 @@ const itinerariesControllers = {
 
         let itinerariedb = await Itineraries.findOneAndUpdate({_id:id}, itineraries) 
         .then((respuesta) => res.json({respuesta}))
+    },
+
+
+    likeDislike: async (req,res)=>{
+      const id= req.params.id;
+      const user= req.user.id.toString();
+      let= itinerary;
+
+      try{
+        itinerary = await Itineraries.findOne({_id:id})
+      if(itinerary.likes.includes(user)){
+        Itineraries.findOneAndUpdate({_id:id}, {$pull:{likes:user}}, {new: true})
+        .then(response => res.json({success:true, response:response.likes}))
+        .catch(error => console.log(error))
+
+      }else{
+        Itineraries.findOneAndUpdate({_id:id}, {$push:{likes:user}}, {new: true})
+        .then(response => res.json({success:true, response:response.likes}))
+        .catch(error => console.log(error))
+      }
+   
+    }catch(err){
+        error = err
+        res.json({
+            success: false, response:error
+        })
+    }
+        
+
+
     }
    
 };   

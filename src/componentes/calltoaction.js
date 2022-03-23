@@ -1,4 +1,5 @@
 import Button from "./buttom"
+
 const CalltoAction = ()=>{
     return(
         <section className="call" style={{backgroundImage:"url(" + process.env.PUBLIC_URL+ "/imagenes/imagencalltoaction.jpg)"}}>

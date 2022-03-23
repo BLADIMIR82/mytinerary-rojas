@@ -11,6 +11,7 @@ import  itinerariesActions from "../redux/actions/itinerariesAction"
 import {connect} from "react-redux"
 import  NoItineraries from "./noitineraries"
 import CardActivities from "./cardActivities"
+import Likes from  "./likes"
 
 
 const ExpandMore = styled((props) => {
@@ -34,9 +35,6 @@ function RecipeReviewCard(props) {
     setExpanded(!expanded);
   };
   
-  const [count, setCount] = useState(0);
-    
-
   
   useEffect(()=>{
     props.fetchearUnaItinerary(props.id)
@@ -72,8 +70,7 @@ function RecipeReviewCard(props) {
           <h3>Likes:</h3>
         </div>
         <div> 
-        {count}
-        <h3>  <button onClick={() => setCount(prevCount => prevCount + 1 )}>🤍  {evento.likes}</button>   </h3>
+       <h3> <Likes likes={props.itinerariesByCity.likes} />  </h3> 
         </div>
         <div> 
           <h3>{evento.hashtag}</h3>
