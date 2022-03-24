@@ -3,7 +3,7 @@ import activitiesActions from "../redux/actions/activitiesAction"
 import { useEffect } from "react";
 
  function CardActivities(props) {
-console.log(props)
+
 
 useEffect(()=>{
 

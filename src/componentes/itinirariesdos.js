@@ -11,7 +11,8 @@ import  itinerariesActions from "../redux/actions/itinerariesAction"
 import {connect} from "react-redux"
 import  NoItineraries from "./noitineraries"
 import CardActivities from "./cardActivities"
-import Likes from  "./likes"
+import { useParams } from 'react-router-dom';
+// import Likes from  "./likes"
 
 
 const ExpandMore = styled((props) => {
@@ -27,7 +28,8 @@ const ExpandMore = styled((props) => {
 
 function RecipeReviewCard(props) {
   console.log(props)
- 
+  // const { id } = useParams()
+  const [reload, setReload] = useState(false)
  
   const [expanded, setExpanded] = React.useState(false);
 
@@ -39,9 +41,14 @@ function RecipeReviewCard(props) {
   useEffect(()=>{
     props.fetchearUnaItinerary(props.id)
     
-  },[])
-  
-
+  },[reload])
+ 
+  async function likesOrDislikes(id_Itinerario) {
+    await props.likeDislike(id_Itinerario)
+    setReload(!reload)
+    
+    console.log(likesOrDislikes)
+  }
 
   return (
       <div className='tineraries'>
@@ -70,7 +77,38 @@ function RecipeReviewCard(props) {
           <h3>Likes:</h3>
         </div>
         <div> 
-       <h3> <Likes likes={props.itinerariesByCity.likes} />  </h3> 
+          
+       
+        <div className="likeDislike">
+                      {props.user ? (
+                        <button onClick={()=>{likesOrDislikes(evento._id)}}>
+                          {evento?.likes.includes(props.user.id) ? (
+                            <span
+                              style={{ color: "red", fontSize: 30 }}
+                              class="material-icons"
+                            >
+                              favorite
+                            </span>
+                          ) : (
+                            <span
+                              style={{ fontSize: 30 }}
+                              class="material-icons"
+                            >
+                              favorite_border
+                            </span>
+                          )}
+                        </button>
+                      ) : (
+                        <span style={{ fontSize: 30 }} class="material-icons">
+                          favorite_border
+                        </span>
+                      )}
+
+                      <h3 style={{ color: "black ", fontSize: 30 }}>
+                        {evento?.likes.length}
+                      </h3>
+                    </div>
+       {/* <h3> <Likes likes={props.itinerariesByCity.likes} />  </h3>  */}
         </div>
         <div> 
           <h3>{evento.hashtag}</h3>
@@ -111,16 +149,16 @@ function RecipeReviewCard(props) {
 const mapDispatchToProps  ={
   
   fetchearUnaItinerary:itinerariesActions.fetchearUnaItinerary,
-
-     
-
+  likeDislike: itinerariesActions.likeDislike,
+  
 }
 
 const mapStateToProps = (state) =>{
   return{
            
       itineraries:state.itinerariesReducer.itineraries,
-      itinerariesByCity:state.itinerariesReducer.itinerariesByCity
+      itinerariesByCity:state.itinerariesReducer.itinerariesByCity,
+      user: state.userReducer.user
   }
 }
 

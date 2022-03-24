@@ -79,35 +79,28 @@ const itinerariesControllers = {
         .then((respuesta) => res.json({respuesta}))
     },
 
+    likeDislike:async (req,res) =>{
+        const id=req.params.id //LLEGA POR PARAMETRO DESDE AXIOS
+        const user = req.user.id //LLEGA POR RESPUESTA DE PASSPORT
 
-    likeDislike: async (req,res)=>{
-      const id= req.params.id;
-      const user= req.user.id.toString();
-      let= itinerary;
+       await Itineraries.findOne({_id: id})
 
-      try{
-        itinerary = await Itineraries.findOne({_id:id})
-      if(itinerary.likes.includes(user)){
-        Itineraries.findOneAndUpdate({_id:id}, {$pull:{likes:user}}, {new: true})
-        .then(response => res.json({success:true, response:response.likes}))
-        .catch(error => console.log(error))
+        .then((itinerary) =>{
+            
+            console.log(itinerary)
+            if(itinerary.likes.includes(user)){
+            Itineraries.findOneAndUpdate({_id:id}, {$pull:{likes:user}},{new:true})//PULL QUITA, SACA
+               .then((response)=> res.json({success:true, response:response.likes}))
+               .catch((error) => console.log(error))
+            }else{
+            Itineraries.findOneAndUpdate({_id: id}, {$push:{likes:user}},{new:true})//PUSH AGREGA
+                .then((response) => res.json({success:true, response:response.likes}))
+                .catch((error) => console.log(error))
+            }
+        }) 
+        .catch((error) => res.json({success:false, response:error}))
+    },
 
-      }else{
-        Itineraries.findOneAndUpdate({_id:id}, {$push:{likes:user}}, {new: true})
-        .then(response => res.json({success:true, response:response.likes}))
-        .catch(error => console.log(error))
-      }
-   
-    }catch(err){
-        error = err
-        res.json({
-            success: false, response:error
-        })
-    }
-        
-
-
-    }
    
 };   
 

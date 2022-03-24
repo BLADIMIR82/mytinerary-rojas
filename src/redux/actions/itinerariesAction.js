@@ -44,6 +44,24 @@ const itinerariesActions = {
             dispatch({type:'cargarItinerary', payload:respuesta.data.respuesta})
 
         }
+    },
+
+    likeDislike: (id) => {
+        const token = localStorage.getItem('token')
+        return async () => {
+            try {
+                let response = await axios.put(`http://localhost:4000/api/likeDislike/${id}`, {},
+                {headers: {
+                    Authorization: "Bearer "+token
+                    }
+                })
+                console.log(response) 
+                return response
+                
+            }catch (error) {
+                console.log(error)
+            }
+        }
     }
 
 

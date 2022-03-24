@@ -12,10 +12,36 @@ export default function Counter() {
     );
   }
 
+  import  NoItineraries from "./noitineraries"
+  import  itinerariesActions from "../redux/actions/itinerariesAction"
+  import {connect} from "react-redux"
 
-  // <>
-  // {props.itinerariesByCity?.length !== 0?(props.itinerariesByCity?.map(evento=> ( 
-  //   <RecipeReviewCard id={id}/>
-  // ))):( <NoItineraries />)}
+  <>
+  {props.itinerariesByCity?.length !== 0?(props.itinerariesByCity?.map(evento=> ( 
+    <RecipeReviewCard id={evento.id}/>
+  ))):( <NoItineraries />)}
 
-  // </> 
+  </> 
+
+  useEffect(()=>{
+    props.fetchearUnaItinerary(props.id)
+    
+  },[])
+
+  const mapDispatchToProps  ={
+  
+    fetchearUnaItinerary:itinerariesActions.fetchearUnaItinerary,
+  
+       
+  
+  }
+  
+  const mapStateToProps = (state) =>{
+    return{
+             
+        itineraries:state.itinerariesReducer.itineraries,
+        itinerariesByCity:state.itinerariesReducer.itinerariesByCity
+    }
+  }
+
+  
