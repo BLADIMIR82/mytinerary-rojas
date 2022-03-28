@@ -183,8 +183,8 @@ function RecipeReviewCard(props) {
         </div>
         <div class="card-body ">
           <textarea type="text" className="card-text textComments" onChange={(event) => setModifi(event.target.value)} defaultValue={comment.comment} />
-          <button id={comment._id} onClick={modificarComentario} class="btn btn-primary">✏Modify</button>
-          <button id={comment._id} onClick={eliminarComentario} class="btn btn-primary">🗑remove</button>
+          <button id={comment._id} onClick={modificarComentario} class="btn btn-secondary">✏Modify</button>
+          <button id={comment._id} onClick={eliminarComentario} class="btn btn-secondary">🗑remove</button>
         </div>
       </div>
 
@@ -199,7 +199,7 @@ LEAVE US YOUR COMMENT
     </div>
     <div className="card-body ">
       <textarea onChange={(event) => setInputText(event.target.value)} className="card-text textComments" value={inputText} />
-      <button onClick={() =>{cargarComentario(evento._id)}} class="btn btn-primary">  ➡ Send</button>
+      <button onClick={() =>{cargarComentario(evento._id)}} class="btn btn-secondary">  ➡ Send</button>
     </div>
   </div> :
   <h1 className="">Make singIn and leave us your comment</h1>   

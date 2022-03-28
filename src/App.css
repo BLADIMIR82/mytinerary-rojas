@@ -954,6 +954,9 @@ textarea{
  height: 5vh;
  border-radius: 0.5rem;
 }
+.card-body button{
+  margin: 0.5rem;
+}
 
 /* ///////////////////////////////
 //////breakpoint respomsive//////
