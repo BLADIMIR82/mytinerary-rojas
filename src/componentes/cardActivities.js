@@ -16,7 +16,9 @@ useEffect(()=>{
          {props.activitiesByItinerary?.map((evento)=> ( 
         <><div>
             <h1>Activities</h1>
-          </div><div className="imageactivities">
+          </div>
+          <div className="imageactivities">
+              
               <div>
               <img className="imagenes" src={evento.imageactivity1} />
                 <h5>{evento.tittle1}</h5>   
@@ -29,6 +31,7 @@ useEffect(()=>{
                 <img className="imagenes"  src={evento.imageactivity3} />
                 <h5>{evento.tittle3}</h5>
               </div>
+             
             </div>
             </>
                ))}

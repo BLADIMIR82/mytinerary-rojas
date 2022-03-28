@@ -11,6 +11,7 @@ const itinerariesActions = {
     },
     
     fetchearUnaItinerary: (id) =>{
+       
         return async (dispatch, getState) => {
             const res = await axios.get("http://localhost:4000/api/allitineraries/"+id)
          
@@ -47,6 +48,7 @@ const itinerariesActions = {
     },
 
     likeDislike: (id) => {
+        console.log(id)
         const token = localStorage.getItem('token')
         return async () => {
             try {

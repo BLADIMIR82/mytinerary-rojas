@@ -4,6 +4,7 @@ const ciudadesControllers= require('../controllers/ciudadesControllers');
 const {obtenerCiudades, obtenerUnaCiudad, cargarCiudad, borrarCiudad, modificarCiudad}=ciudadesControllers
 const passport = require('../config/passport');
 const activitiesControllers= require('../controllers/activitiesControllers');
+const commentsControllers = require('../controllers/commentsControllers.js');
 
 Router.route('/allcities')
 .get(obtenerCiudades)
@@ -69,6 +70,16 @@ Router.route('/allactivities/:id')
 Router.route('/allactivities/itinerary/:id')
   .get(obtenerActividadporItinerario)
 
+/////////////////////////////controllers comments/////////////////////////////////////
+
+const { addComment, modifiComment, deleteComment } = commentsControllers
+
+Router.route('/itinerary/comment')
+  .post(passport.authenticate('jwt', { session: false }), addComment)
+  .put(passport.authenticate('jwt', { session: false }), modifiComment)
+
+Router.route('/itinerary/comment/:id')
+.post(passport.authenticate('jwt', { session: false }), deleteComment)
 
 
 

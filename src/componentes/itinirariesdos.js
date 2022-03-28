@@ -11,9 +11,7 @@ import  itinerariesActions from "../redux/actions/itinerariesAction"
 import {connect} from "react-redux"
 import  NoItineraries from "./noitineraries"
 import CardActivities from "./cardActivities"
-import { useParams } from 'react-router-dom';
-// import Likes from  "./likes"
-
+import commentsActions from "../redux/actions/commentsActions"
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -28,10 +26,12 @@ const ExpandMore = styled((props) => {
 
 function RecipeReviewCard(props) {
   console.log(props)
-  // const { id } = useParams()
+
   const [reload, setReload] = useState(false)
- 
+  const [inputText, setInputText] = useState()
+  const [modifi, setModifi] = useState()
   const [expanded, setExpanded] = React.useState(false);
+  const [itinerary, setItinerary] = useState()
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -41,13 +41,44 @@ function RecipeReviewCard(props) {
   useEffect(()=>{
     props.fetchearUnaItinerary(props.id)
     
-  },[reload])
+  },[reload])   
+
+ 
+  async function cargarComentario(idcomment) {
+
+    const commentData = {
+      itinerary:idcomment,
+      comment: inputText,           
+    }
+    await props.addComment(commentData)
+    .then(response =>setItinerary(response.data.response.nuevoComment), setInputText(""))
+    setReload(!reload)
+    console.log(commentData)  
+  }
+
+
+
+  async function modificarComentario(event) {
+    const commentData = {
+      commentID: event.target.id,
+      comment: modifi,
+    }
+    await props.modifiComment(commentData)
+    setReload(!reload)
+
+  }
+
+
+
+  async function eliminarComentario(event) {
+    await props.deleteComment(event.target.id)
+    setReload(!reload)
+  }
  
   async function likesOrDislikes(id_Itinerario) {
     await props.likeDislike(id_Itinerario)
     setReload(!reload)
     
-    console.log(likesOrDislikes)
   }
 
   return (
@@ -103,12 +134,11 @@ function RecipeReviewCard(props) {
                           favorite_border
                         </span>
                       )}
-
                       <h3 style={{ color: "black ", fontSize: 30 }}>
                         {evento?.likes.length}
                       </h3>
                     </div>
-       {/* <h3> <Likes likes={props.itinerariesByCity.likes} />  </h3>  */}
+    
         </div>
         <div> 
           <h3>{evento.hashtag}</h3>
@@ -130,7 +160,51 @@ function RecipeReviewCard(props) {
         <CardContent  >
         
         <CardActivities id={evento._id}/>
-      
+
+        <div className="comments">
+
+{evento?.comments.map(comment =>
+  <>
+    {comment.userID?._id !== props.user?.id ?
+      <div className="card cardComments " key={comment._id}>
+        <div className="card-header">
+          {comment.userID?.firstName}
+          <img className="imgcomments"  src={comment.userID?.photoURL} />
+        </div>
+        <div class="card-body">
+          <p class="card-text">{comment.comment}</p>
+        </div>
+      </div> :
+
+      <div className="card cardComments">
+        <div class="card-header">
+          {comment.userID?.firstName}
+          <img className="imgcomments"  src={comment.userID?.photoURL} />
+        </div>
+        <div class="card-body ">
+          <textarea type="text" className="card-text textComments" onChange={(event) => setModifi(event.target.value)} defaultValue={comment.comment} />
+          <button id={comment._id} onClick={modificarComentario} class="btn btn-primary">✏Modify</button>
+          <button id={comment._id} onClick={eliminarComentario} class="btn btn-primary">🗑remove</button>
+        </div>
+      </div>
+
+    }
+  </>
+)}
+
+{props.user ?
+  <div className="card cardComments">
+    <div class="card-header">
+LEAVE US YOUR COMMENT
+    </div>
+    <div className="card-body ">
+      <textarea onChange={(event) => setInputText(event.target.value)} className="card-text textComments" value={inputText} />
+      <button onClick={() =>{cargarComentario(evento._id)}} class="btn btn-primary">Send</button>
+    </div>
+  </div> :
+  <h1 className="">Make singIn and leave us your comment</h1>   
+}
+</div>         
           <ExpandMore
             expand={expanded}
             onClick={handleExpandClick}
@@ -147,7 +221,9 @@ function RecipeReviewCard(props) {
   );
 }
 const mapDispatchToProps  ={
-  
+  addComment: commentsActions.addComment,
+  modifiComment: commentsActions.modifiComment,
+  deleteComment: commentsActions.deleteComment,
   fetchearUnaItinerary:itinerariesActions.fetchearUnaItinerary,
   likeDislike: itinerariesActions.likeDislike,
   
@@ -156,7 +232,7 @@ const mapDispatchToProps  ={
 const mapStateToProps = (state) =>{
   return{
            
-      itineraries:state.itinerariesReducer.itineraries,
+     
       itinerariesByCity:state.itinerariesReducer.itinerariesByCity,
       user: state.userReducer.user
   }

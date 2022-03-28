@@ -10,8 +10,11 @@ const itinerariesSchema = new mongoose.Schema({
     itineraryactivity:{type:String, required:true}, 
     location:{type:String, required:true}, 
     hashtag:{type:String, required:true},
-    // ciudad: {type: mongoose.Types.ObjectId, ref:'ciudades', required: true}
-    ciudad:{type:String, required:true}
+       ciudad:{type:String, required:true},
+    comments:[{
+        comment: {type:String},
+        userID: {type:mongoose.Types.ObjectId, ref:"users"},
+    }],
                   
       
 }) 

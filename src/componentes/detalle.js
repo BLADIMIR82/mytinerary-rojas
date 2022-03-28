@@ -43,11 +43,11 @@ function CardsDetalle(props) {
 </div>
 </div>
     
-
+       
     
     <div>
 
-<RecipeReviewCard id={id}/>
+<RecipeReviewCard id={id} />
      
     </div>
   <div></div>

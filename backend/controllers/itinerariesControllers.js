@@ -25,7 +25,7 @@ const itinerariesControllers = {
         let error = null
 
         try{
-            itinerary = await Itineraries.find({ciudad:id})
+            itinerary = await Itineraries.find({ciudad:id}).populate("comments.userID", { firstName: 1, photoURL:1})
            console.log(itinerary)
         }catch(err){
             error = err
