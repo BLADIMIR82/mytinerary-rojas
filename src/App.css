@@ -163,7 +163,7 @@
 .card {
   width: auto;
   height: auto;
-  box-shadow: 0 40px 60px -6px black;
+  box-shadow: 0 40px 30px 1px black;
   border-radius: 2rem;
 }
 
@@ -934,7 +934,7 @@ border-radius: 1rem;
   height: 4rem;
   text-align: center;
   border-radius: 1rem;
-  margin-top: 1.5rem;
+  margin-top: 1rem;
 }
 
 .card-header{
@@ -943,6 +943,7 @@ border-radius: 1rem;
   align-items: center;
   text-align: center;
   font-size: 1.5rem;
+  border-radius: 1.5rem;
 }
 .card-header img{
   height: 7vh;
@@ -954,8 +955,26 @@ textarea{
  height: 5vh;
  border-radius: 0.5rem;
 }
+.card-body {
+ border-radius: 2rem ;
+  
+}
 .card-body button{
-  margin: 0.5rem;
+  margin-left: 0.5rem;
+  margin-bottom: 1.2rem;
+}
+
+.card1 {
+  /* position: relative; */
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  /* background-clip: border-box; */
+  /* border: 1px solid rgba(0,0,0,.125); */
+  margin-top: 0.3rem;
+  border-radius: 1.2rem;
 }
 
 /* ///////////////////////////////
@@ -1126,6 +1145,15 @@ textarea{
   height: 5vh;
   width: 7vw;
 }
+
+.comments h1 {
+  background-color: white;
+  height: rem;
+  text-align: center;
+  border-radius: 1rem;
+  margin-top: 1rem;
+  font-size: 1.5rem;
+}
 }
 
 
@@ -1141,5 +1169,16 @@ textarea{
     padding: 0rem 2rem;
     border: 2px solid black;
     
+}
+.comments h1 {
+  background-color: white;
+  height: rem;
+  text-align: center;
+  border-radius: 1rem;
+  margin-top: 1rem;
+  font-size: 1.5rem;
+}
+.card-text:last-child {
+  font-size: 1rem;
 }
 }

@@ -166,7 +166,7 @@ function RecipeReviewCard(props) {
 {evento?.comments.map(comment =>
   <>
     {comment.userID?._id !== props.user?.id ?
-      <div className="card cardComments " key={comment._id}>
+      <div className="card1 cardComments " key={comment._id}>
         <div className="card-header">
           {comment.userID?.firstName}
           <img className="imgcomments"  src={comment.userID?.photoURL} />
@@ -176,12 +176,12 @@ function RecipeReviewCard(props) {
         </div>
       </div> :
 
-      <div className="card cardComments">
-        <div class="card-header">
+      <div className="card1 cardComments">
+        <div className="card-header">
           {comment.userID?.firstName}
           <img className="imgcomments"  src={comment.userID?.photoURL} />
         </div>
-        <div class="card-body ">
+        <div className="card-body ">
           <textarea type="text" className="card-text textComments" onChange={(event) => setModifi(event.target.value)} defaultValue={comment.comment} />
           <button id={comment._id} onClick={modificarComentario} class="btn btn-secondary">✏Modify</button>
           <button id={comment._id} onClick={eliminarComentario} class="btn btn-secondary">🗑remove</button>
@@ -193,7 +193,7 @@ function RecipeReviewCard(props) {
 )}
 
 {props.user ?
-  <div className="card cardComments">
+  <div className="card1 cardComments">
     <div class="card-header">
 LEAVE US YOUR COMMENT
     </div>
