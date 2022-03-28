@@ -25,7 +25,7 @@ const ExpandMore = styled((props) => {
 
 
 function RecipeReviewCard(props) {
-  console.log(props)
+
 
   const [reload, setReload] = useState(false)
   const [inputText, setInputText] = useState()
@@ -53,7 +53,7 @@ function RecipeReviewCard(props) {
     await props.addComment(commentData)
     .then(response =>setItinerary(response.data.response.nuevoComment), setInputText(""))
     setReload(!reload)
-    console.log(commentData)  
+   
   }
 
 
@@ -199,7 +199,7 @@ LEAVE US YOUR COMMENT
     </div>
     <div className="card-body ">
       <textarea onChange={(event) => setInputText(event.target.value)} className="card-text textComments" value={inputText} />
-      <button onClick={() =>{cargarComentario(evento._id)}} class="btn btn-primary">Send</button>
+      <button onClick={() =>{cargarComentario(evento._id)}} class="btn btn-primary">  ➡ Send</button>
     </div>
   </div> :
   <h1 className="">Make singIn and leave us your comment</h1>   
