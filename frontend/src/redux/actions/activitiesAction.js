@@ -5,14 +5,14 @@ const activitiesActions = {
     fetchearActivity: () =>{
       
        return async(dispatch, getState) => {
-            const res = await axios.get('http://localhost:4000/api/allactivities')
+            const res = await axios.get('https://mytinerari-rojas.herokuapp.com/api/allactivities')
             dispatch({type:'fetchActivities', payload:res.data.response.activities})
        }
     },
    
     fetchearUnaActivity: (id) =>{
         return async (dispatch, getState) => {
-            const res = await axios.get("http://localhost:4000/api/allactivities/"+id)
+            const res = await axios.get("https://mytinerari-rojas.herokuapp.com/api/allactivities/"+id)
              dispatch({type:'fetchearUnaActivity', payload:res.data.response.activities})
           
         }
@@ -21,7 +21,7 @@ const activitiesActions = {
     filterActivityforItinerary: (id) => {
 
       return async (dispatch, getState) => {
-        const res = await axios.get('http://localhost:4000/api/allactivities/itinerary/${id}')
+        const res = await axios.get('https://mytinerari-rojas.herokuapp.com/api/allactivities/itinerary/${id}')
         dispatch({ type: "filterActivitiesForItinerary", payload: res.data.respuesta })
       }
     },

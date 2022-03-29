@@ -5,7 +5,7 @@ const itinerariesActions = {
     fetchearItinerary: () =>{
       
        return async(dispatch, getState) => {
-            const res = await axios.get('http://localhost:4000/api/allitineraries')
+            const res = await axios.get('https://mytinerari-rojas.herokuapp.com/api/allitineraries')
             dispatch({type:'fetchItinerary', payload:res.data.response.itineraries})
        }
     },
@@ -13,7 +13,7 @@ const itinerariesActions = {
     fetchearUnaItinerary: (id) =>{
        
         return async (dispatch, getState) => {
-            const res = await axios.get("http://localhost:4000/api/allitineraries/"+id)
+            const res = await axios.get("https://mytinerari-rojas.herokuapp.com/api/allitineraries/"+id)
          
             dispatch({type:'fetchearUnaItinerary', payload:res.data.response.itinerary})
           
@@ -24,7 +24,7 @@ const itinerariesActions = {
         return async(dispatch, getState) => {
             try {
             
-                const respuesta = await axios.delete('http://localhost:4000/api/allitineraries/'+id)
+                const respuesta = await axios.delete('https://mytinerari-rojas.herokuapp.com/api/allitineraries/'+id)
 
                 dispatch({type:'deleteItinerary', payload:respuesta.data.respuesta})
 
@@ -41,7 +41,7 @@ const itinerariesActions = {
     },
     cargarItinerary: (name,cities)=>{
         return async(dispatch,getState)=>{
-            const respuesta = await axios.post('http://localhost:4000/api/allitineraries',{name,cities})
+            const respuesta = await axios.post('https://mytinerari-rojas.herokuapp.com/api/allitineraries',{name,cities})
             dispatch({type:'cargarItinerary', payload:respuesta.data.respuesta})
 
         }
@@ -52,7 +52,7 @@ const itinerariesActions = {
         const token = localStorage.getItem('token')
         return async () => {
             try {
-                let response = await axios.put(`http://localhost:4000/api/likeDislike/${id}`, {},
+                let response = await axios.put(`https://mytinerari-rojas.herokuapp.com/api/likeDislike/${id}`, {},
                 {headers: {
                     Authorization: "Bearer "+token
                     }

@@ -25,7 +25,7 @@ const sendEmail = async (email, uniqueString) => { //FUNCION ENCARGADA DE ENVIAR
         subject: "User email verification ", //EL ASUNTO Y EN HTML EL TEMPLATE PARA EL CUERPO DE EMAIL Y EL LINK DE VERIFICACION
         html: `<div>
         <h1 style="color:red">  welcome to My Tinerary!!! <h1>
-        <h2 style="color:red">Press  <a href=http://localhost:4000/api/verify/${uniqueString}>here</a> to confirm your email. Thanks </h2>  
+        <h2 style="color:red">Press  <a href=https://mytinerari-rojas.herokuapp.com/api/verify/${uniqueString}>here</a> to confirm your email. Thanks </h2>  
         </div> `  
     };
     await transporter.sendMail(mailOptions, function (error, response) { //SE REALIZA EL ENVIO

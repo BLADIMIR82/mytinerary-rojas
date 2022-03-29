@@ -4,7 +4,7 @@ const citiesActions = {
     
     fetchearCities: () =>{
        return async(dispatch, getState) => {
-            const res = await axios.get('http://localhost:4000/api/allcities')
+            const res = await axios.get('https://mytinerari-rojas.herokuapp.com/api/allcities')
             dispatch({type:'fetch', payload:res.data.response.ciudades})
        }
     },
@@ -13,7 +13,7 @@ const citiesActions = {
         return async (dispatch, getState) => {
             try {
 
-                const respuesta = await axios.get("http://localhost:4000/api/allcities/"+id)
+                const respuesta = await axios.get("https://mytinerari-rojas.herokuapp.com/api/allcities/"+id)
              
                 return(respuesta.data.response)
 
@@ -26,7 +26,7 @@ const citiesActions = {
         return async(dispatch, getState) => {
             try {
             
-                const respuesta = await axios.delete('http://localhost:4000/api/allcities/'+id)
+                const respuesta = await axios.delete('https://mytinerari-rojas.herokuapp.com/api/allcities/'+id)
 
                 dispatch({type:'delete', payload:respuesta.data.respuesta})
 
@@ -43,7 +43,7 @@ const citiesActions = {
     },
     cargarCities: (name,cities)=>{
         return async(dispatch,getState)=>{
-            const respuesta = await axios.post('http://localhost:4000/api/allcities',{name,cities})
+            const respuesta = await axios.post('https://mytinerari-rojas.herokuapp.com/api/allcities',{name,cities})
             dispatch({type:'cargarCity', payload:respuesta.data.respuesta})
 
         }
