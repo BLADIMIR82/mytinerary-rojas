@@ -1,3 +1,3 @@
 # mytinerary-rojas
-mi primer app en Mern
+my first app is MERN
 technology such as NodeJS, Express, React, MOngo db and redux are used in clean code
